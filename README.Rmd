@@ -1,3 +1,6 @@
+---
+output: github_document
+---
 
 # runbisonpic
 
@@ -6,8 +9,17 @@
 
 The goal of runbisonpic is to ...
 
-## Installation
+## Usage
 
+### How to Install the R Package
+
+To install the developmental version from
+[GitHub](https://github.com/poissonconsulting/runbisonpic)
+
+```{r, eval=FALSE}
+# install.packages("remotes")
+remotes::install_github("poissonconsulting/runbisonpic")
+```
 
 ## Example
 
