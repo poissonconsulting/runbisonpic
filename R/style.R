@@ -30,6 +30,11 @@ css_styling <- function() {
     margin-right: 15px !important;
   }
 
+  .btn-tbl {
+    float: right;
+    margin-right: 15px !important;
+  }
+
   "
   tags$style(x, type = "text/css")
 }

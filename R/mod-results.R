@@ -52,22 +52,32 @@ mod_results_ui <- function(id, label = "model") {
 
   tables <- bs4Dash::box(
     width = 12,
+    title = "Tables",
     tabsetPanel(
       tabPanel(
         title = "1. Table",
         wellPanel(
+          br(),
+          uiOutput(ns("download_button_t1")),
+          br(), br(),
           uiOutput(ns("ui_table_1"))
         )
       ),
       tabPanel(
         title = "2. Table",
         wellPanel(
+          br(),
+          uiOutput(ns("download_button_t2")),
+          br(), br(),
           uiOutput(ns("ui_table_2"))
         )
       ),
       tabPanel(
         title = "3. Table",
         wellPanel(
+          br(),
+          uiOutput(ns("download_button_t3")),
+          br(), br(),
           uiOutput(ns("ui_table_3"))
         )
       )
@@ -97,7 +107,6 @@ mod_results_server <- function(id, data, model) {
     )
 
     # Plots
-
     output$plot_1 <- renderPlot({
       rv$plot_1 <- plot(mtcars$mpg ~ mtcars$disp)
       rv$plot_1
@@ -177,6 +186,69 @@ mod_results_server <- function(id, data, model) {
     )
 
     # Tables
+
+    observe({
+      rv$data1 <- mtcars
+    })
+
+    output$table_1 <- DT::renderDT(data_table(rv$data1))
+
+    output$ui_table_1 <- renderUI({
+      DT::DTOutput(ns("table_1"))
+    })
+
+    output$download_button_t1 <- renderUI({
+      downloadButton(ns("download_table_1"), "Table", class = "btn-tbl")
+    })
+
+    output$download_table_1 <- downloadHandler(
+      filename = "runbisonpic_table_1.csv",
+      content = function(file) {
+        write.csv(rv$data1, file)
+      }
+    )
+
+    observe({
+      rv$data2 <- beaver2
+    })
+
+    output$table_2 <- DT::renderDT(data_table(rv$data2))
+
+    output$ui_table_2 <- renderUI({
+      DT::DTOutput(ns("table_2"))
+    })
+
+    output$download_button_t2 <- renderUI({
+      downloadButton(ns("download_table_2"), "Table", class = "btn-tbl")
+    })
+
+    output$download_table_2 <- downloadHandler(
+      filename = "runbisonpic_table_2.csv",
+      content = function(file) {
+        write.csv(rv$data2, file)
+      }
+    )
+
+    observe({
+      rv$data3 <- women
+    })
+
+    output$table_3 <- DT::renderDT(data_table(rv$data3))
+
+    output$ui_table_3 <- renderUI({
+      DT::DTOutput(ns("table_3"))
+    })
+
+    output$download_button_t3 <- renderUI({
+      downloadButton(ns("download_table_3"), "Table", class = "btn-tbl")
+    })
+
+    output$download_table_3 <- downloadHandler(
+      filename = "runbisonpic_table_3.csv",
+      content = function(file) {
+        write.csv(rv$data3, file)
+      }
+    )
 
 
   })
