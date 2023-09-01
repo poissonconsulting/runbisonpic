@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-mod_results_ui <- function(id, label = "results") {
+mod_model_ui <- function(id, label = "results") {
 
   ns <- NS(id)
 
@@ -28,7 +28,7 @@ mod_results_ui <- function(id, label = "results") {
 }
 
 
-mod_results_server <- function(id, upload) {
+mod_model_server <- function(id, data) {
   moduleServer(id, function(input, output, session) {
 
     ns <- session$ns
