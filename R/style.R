@@ -25,6 +25,11 @@ css_styling <- function() {
     color: #0070C4
   }
 
+  .btn-plot {
+    float: right;
+    margin-right: 15px !important;
+  }
+
   "
   tags$style(x, type = "text/css")
 }
