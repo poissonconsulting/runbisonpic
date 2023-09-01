@@ -17,12 +17,27 @@ mod_model_ui <- function(id, label = "results") {
   ns <- NS(id)
 
   instructions <- bs4Dash::box(
-    width = 12
+    width = 12,
+    title = shinyhelper::helper(
+      div(HTML(glue::glue("Run Model &nbsp &nbsp &nbsp"))),
+      content = "model",
+      size = "l"
+    ),
+    uiOutput(ns("ui_thinning")),
+    uiOutput(ns("ui_herd_size")),
+    uiOutput(ns("ui_coef_variation")),
+    actionButton(ns("run"), "Run")
+  )
+
+  output <- bs4Dash::box(
+    width = 12,
+    title = "Output",
+    uiOutput(ns("ui_table"))
   )
 
   fluidRow(
-    column(width = 4, instructions),
-    column(width = 8, uiOutput(ns("ui_table")))
+    column(width = 3, instructions),
+    column(width = 9, output)
   )
 
 }
@@ -33,6 +48,67 @@ mod_model_server <- function(id, data) {
 
     ns <- session$ns
 
+    rv <- reactiveValues(
+      model_table = NULL
+    )
+
+    # control widgets
+    output$ui_thinning <- renderUI({
+      data$reset
+      numericInput(
+        ns("thinning"),
+        label = "Model Thinning",
+        value = 50,
+        min = 1,
+        max = 10000,
+        step = 100
+      )
+    })
+
+    output$ui_herd_size <- renderUI({
+      data$reset
+      numericInput(
+        ns("herd_size"),
+        label = "Initial Herd Size",
+        value = 200,
+        min = 1,
+        max = 10000,
+        step = 100
+      )
+    })
+
+    output$ui_coef_variation <- renderUI({
+      data$reset
+      numericInput(
+        ns("coef_variation"),
+        label = "Coefficeint of Variation",
+        value = 0.05,
+        min = 0,
+        max = 1,
+        step = 0.05
+      )
+    })
+
+    w <- waiter_model()
+
+    observeEvent(input$run, {
+
+      w$show()
+      # TO DO: switch out for model code
+      Sys.sleep(5)
+      mod <- lm(f1 ~ f0, data = data$data$event)
+      mod_sum <- summary(mod)
+      rv$model_table <- data.frame(mod_sum$fstatistic)
+      w$hide()
+    })
+
+    output$ui_table <- renderUI({
+      DT::DTOutput(ns("table"))
+    })
+
+    output$table <- DT::renderDT({
+      data_table( rv$model_table)
+    })
 
   })
 }

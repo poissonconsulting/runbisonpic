@@ -17,6 +17,7 @@ Imports:
     readxl,
     shiny,
     shinyhelper,
+    waiter,
     writexl
 Suggests: 
     testthat (>= 3.0.0)

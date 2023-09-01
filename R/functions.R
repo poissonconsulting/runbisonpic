@@ -99,3 +99,15 @@ check_sheet_names <- function(sheets, template_sheets) {
 is_try_error <- function(x) {
   inherits(x, "try-error")
 }
+
+# Waiter ----
+
+waiter_model <- function(msg = "Running model this is gonna take a while ...") {
+  waiter::Waiter$new(
+    html = tagList(
+      waiter::spin_flower(),
+      h4(msg)
+    ),
+    color = "rgb(145, 145, 145, 0.8)"
+  )
+}

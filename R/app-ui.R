@@ -58,6 +58,7 @@ app_ui <- function() {
     ),
     body = dashboardBody(
       css_styling(),
+      waiter::useWaiter(),
       tabItems(
         tabItem(
           tabName = "upload",
