@@ -6,15 +6,23 @@ Authors@R:
            comment = c(ORCID = "0000-0001-7388-1222"))
 Description: What the package does (one paragraph).
 License: Apache License (>= 2)
+Imports: 
+    bisonpictools,
+    bs4Dash,
+    chktemplate,
+    DT,
+    fresh,
+    glue,
+    pkgload,
+    readxl,
+    shiny,
+    shinyhelper,
+    writexl
+Suggests: 
+    testthat (>= 3.0.0)
+Remotes:
+    poissonconsulting/bisonpictools
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-Suggests: 
-    testthat (>= 3.0.0)
 Config/testthat/edition: 3
-Imports: 
-    bs4Dash,
-    fresh,
-    pkgload,
-    shiny,
-    shinyhelper
