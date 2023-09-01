@@ -37,12 +37,12 @@ app_ui <- function() {
         menuItem(
           "Run Model",
           tabName = "model",
-          icon = icon("download")
+          icon = icon("diagram-project")
         ),
         menuItem(
           "Results",
           tabName = "results",
-          icon = icon("download")
+          icon = icon("chart-area")
         ),
         menuItem(
           "Help",
