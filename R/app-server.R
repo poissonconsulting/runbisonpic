@@ -22,9 +22,15 @@ app_server <- function(input, output, session) {
     "mod_upload_ui"
   )
 
-  mod_download_server(
-    "mod_download_ui",
+  model <- mod_model_server(
+    "mod_model_ui",
     data
+  )
+
+  mod_results_server(
+    "mod_results_ui",
+    data,
+    model
   )
 
   mod_help_server(

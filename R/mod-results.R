@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-mod_download_ui <- function(id, label = "download") {
+mod_model_ui <- function(id, label = "model") {
 
   ns <- NS(id)
 
@@ -28,7 +28,7 @@ mod_download_ui <- function(id, label = "download") {
 }
 
 
-mod_download_server <- function(id, upload) {
+mod_model_server <- function(id, upload) {
   moduleServer(id, function(input, output, session) {
 
     ns <- session$ns

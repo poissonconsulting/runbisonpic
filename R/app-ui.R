@@ -35,8 +35,13 @@ app_ui <- function() {
           icon = icon("upload")
         ),
         menuItem(
-          "Download Data",
-          tabName = "download",
+          "Run Model",
+          tabName = "model",
+          icon = icon("download")
+        ),
+        menuItem(
+          "Results",
+          tabName = "results",
           icon = icon("download")
         ),
         menuItem(
@@ -59,8 +64,12 @@ app_ui <- function() {
           mod_upload_ui("mod_upload_ui")
         ),
         tabItem(
-          tabName = "download",
-          mod_download_ui("mod_download_ui")
+          tabName = "model",
+          mod_model_ui("mod_model_ui")
+        ),
+        tabItem(
+          tabName = "results",
+          mod_results_ui("mod_results_ui")
         ),
         tabItem(
           tabName = "help",
