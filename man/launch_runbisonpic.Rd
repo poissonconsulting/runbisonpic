@@ -2,7 +2,7 @@
 % Please edit documentation in R/launch-runbisonpic.R
 \name{launch_runbisonpic}
 \alias{launch_runbisonpic}
-\title{Run runbisonpic App}
+\title{Lauch the runbisonpic App}
 \usage{
 launch_runbisonpic()
 }

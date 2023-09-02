@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#' Run runbisonpic App
+#' Lauch the runbisonpic App
 #'
 #' This function will launch the app locally.
 #'

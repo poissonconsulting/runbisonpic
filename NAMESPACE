@@ -2,5 +2,6 @@
 
 export(launch_runbisonpic)
 import(bs4Dash)
-import(shiny, except = c(p,tabsetPanel,column, updateTabsetPanel, insertTab, actionButton, navbarMenu))
+import(shiny, except = c(p,tabsetPanel,column,
+  updateTabsetPanel, insertTab, actionButton, navbarMenu))
 importFrom(pkgload,load_all)
