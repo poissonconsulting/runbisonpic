@@ -41,7 +41,7 @@ mod_about_server <- function(id) {
         as.character(utils::packageVersion("bisonpictools")),
         "<br/>",
         "runbisonpic version: ",
-        as.character(utils::packageVersion("shinybisonpic"))
+        as.character(utils::packageVersion("runbisonpic"))
       )
     })
 
