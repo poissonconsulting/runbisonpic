@@ -13,7 +13,6 @@
 # limitations under the License.
 
 mod_results_ui <- function(id, label = "model") {
-
   ns <- NS(id)
 
   plots <- bs4Dash::box(
@@ -89,15 +88,11 @@ mod_results_ui <- function(id, label = "model") {
       column(width = 12, plots, tables)
     )
   )
-
-
-
 }
 
 
 mod_results_server <- function(id, data, model) {
   moduleServer(id, function(input, output, session) {
-
     ns <- session$ns
 
     rv <- reactiveValues(
@@ -249,7 +244,5 @@ mod_results_server <- function(id, data, model) {
         utils::write.csv(rv$data3, file)
       }
     )
-
-
   })
 }

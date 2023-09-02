@@ -13,7 +13,6 @@
 # limitations under the License.
 
 mod_model_ui <- function(id, label = "results") {
-
   ns <- NS(id)
 
   instructions <- bs4Dash::box(
@@ -39,13 +38,11 @@ mod_model_ui <- function(id, label = "results") {
     column(width = 3, instructions),
     column(width = 9, output)
   )
-
 }
 
 
 mod_model_server <- function(id, data) {
   moduleServer(id, function(input, output, session) {
-
     ns <- session$ns
 
     rv <- reactiveValues(
@@ -92,7 +89,6 @@ mod_model_server <- function(id, data) {
     w <- waiter_model()
 
     observeEvent(input$run, {
-
       w$show()
       # TO DO: switch out for model code
       Sys.sleep(5)
@@ -107,8 +103,7 @@ mod_model_server <- function(id, data) {
     })
 
     output$table <- DT::renderDT({
-      data_table( rv$model_table)
+      data_table(rv$model_table)
     })
-
   })
 }

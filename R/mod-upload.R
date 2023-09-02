@@ -13,7 +13,6 @@
 # limitations under the License.
 
 mod_upload_ui <- function(id, label = "upload") {
-
   ns <- NS(id)
 
   instructions <- bs4Dash::box(
@@ -35,7 +34,6 @@ mod_upload_ui <- function(id, label = "upload") {
     column(width = 3, instructions),
     column(width = 9, uiOutput(ns("ui_table")))
   )
-
 }
 
 
@@ -161,11 +159,11 @@ mod_upload_server <- function(id) {
       # check types match
       # TO DO Turn on when ready in bisonpictools
       data <- try(
-       # bisonpictools:::bpt_check_data(
-       #   location = data$location,
-       #   event = data$event,
-       #   template_model
-       # )
+        # bisonpictools:::bpt_check_data(
+        #   location = data$location,
+        #   event = data$event,
+        #   template_model
+        # )
         chktemplate::check_data_format(
           location = data$location,
           event = data$event,
