@@ -1,10 +1,24 @@
 Package: runbisonpic
-Title: What the Package Does (One Line, Title Case)
+Title: Shiny App for Modeling Wood Bison Camera Trap Data
 Version: 0.0.0.9000
-Authors@R: 
-    person("Ayla", "Pearson", , "ayla@poissonconsulting.ca", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0001-7388-1222"))
-Description: What the package does (one paragraph).
+Authors@R: c(
+    person("Ayla", "Pearson", , "ayla@poissonconsulting.ca", 
+           role = c("aut", "cre"), comment = c(ORCID = "0000-0001-7388-1222")),
+    person("Andrea", "Kortello", , "andrea@poissonconsulting.ca", role = "ctb",
+           comment = c(ORCID = "0000-0001-8047-3331")),       
+    person("Nicole", "Hill", , "nicole@poissonconsulting.ca", role = "ctb",
+           comment = c(ORCID = "0000-0002-7623-2153")),       
+    person("Joe", "Thorley", , "joe@poissonconsulting.ca", role = "ctb",
+           comment = c(ORCID = "0000-0002-7683-4592")),
+    person("Troy", "Hegel", , "Troy.Hegel@gov.ab.ca", role = "ctb"),
+    person("Province of Alberta", role = "cph")
+    )
+Description: This app is a wrapper on the `bisonpictools` R package which 
+    provides non R user's a way to model camera trap data. The raw data is first
+    uploaded to `shinybisonpic` which is an app that processes raw data and 
+    prepares it for modeling and lets users explore their data. The 
+    `runbisonpic` app inputs the processed data from `shinybisonpic` and runs
+    a XXXX model and outputs the results as plots and tables. 
 License: Apache License (>= 2)
 Imports: 
     bisonpictools,
@@ -12,6 +26,7 @@ Imports:
     chktemplate,
     DT,
     fresh,
+    ggplot2,
     glue,
     pkgload,
     readxl,

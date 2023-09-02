@@ -4,12 +4,21 @@
 \name{runbisonpic-package}
 \alias{runbisonpic}
 \alias{runbisonpic-package}
-\title{runbisonpic: What the Package Does (One Line, Title Case)}
+\title{runbisonpic: Shiny App for Modeling Wood Bison Camera Trap Data}
 \description{
-What the package does (one paragraph).
+This app is a wrapper on the `bisonpictools` R package which provides non R user's a way to model camera trap data. The raw data is first uploaded to `shinybisonpic` which is an app that processes raw data and prepares it for modeling and lets users explore their data. The `runbisonpic` app inputs the processed data from `shinybisonpic` and runs a XXXX model and outputs the results as plots and tables.
 }
 \author{
 \strong{Maintainer}: Ayla Pearson \email{ayla@poissonconsulting.ca} (\href{https://orcid.org/0000-0001-7388-1222}{ORCID})
+
+Other contributors:
+\itemize{
+  \item Andrea Kortello \email{andrea@poissonconsulting.ca} (\href{https://orcid.org/0000-0001-8047-3331}{ORCID}) [contributor]
+  \item Nicole Hill \email{nicole@poissonconsulting.ca} (\href{https://orcid.org/0000-0002-7623-2153}{ORCID}) [contributor]
+  \item Joe Thorley \email{joe@poissonconsulting.ca} (\href{https://orcid.org/0000-0002-7683-4592}{ORCID}) [contributor]
+  \item Troy Hegel \email{Troy.Hegel@gov.ab.ca} [contributor]
+  \item Province of Alberta [copyright holder]
+}
 
 }
 \keyword{internal}
