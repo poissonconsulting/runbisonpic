@@ -96,7 +96,7 @@ mod_model_server <- function(id, data) {
       w$show()
       # TO DO: switch out for model code
       Sys.sleep(5)
-      mod <- lm(f1 ~ f0, data = data$data$event)
+      mod <- stats::lm(f1 ~ f0, data = data$data$event)
       mod_sum <- summary(mod)
       rv$model_table <- data.frame(mod_sum$fstatistic)
       w$hide()

@@ -108,7 +108,7 @@ mod_results_server <- function(id, data, model) {
 
     # Plots
     output$plot_1 <- renderPlot({
-      rv$plot_1 <- plot(mtcars$mpg ~ mtcars$disp)
+      rv$plot_1 <- plot(datasets::mtcars$mpg ~ datasets::mtcars$disp)
       rv$plot_1
     })
 
@@ -134,7 +134,7 @@ mod_results_server <- function(id, data, model) {
     )
 
     output$plot_2 <- renderPlot({
-      rv$plot_2 <- plot(mtcars$drat ~ mtcars$cyl)
+      rv$plot_2 <- plot(datasets::mtcars$drat ~ datasets::mtcars$cyl)
       rv$plot_2
     })
 
@@ -160,7 +160,7 @@ mod_results_server <- function(id, data, model) {
     )
 
     output$plot_3 <- renderPlot({
-      rv$plot_3 <- plot(mtcars$gear ~ mtcars$hp)
+      rv$plot_3 <- plot(datasets::mtcars$gear ~ datasets::mtcars$hp)
       rv$plot_3
     })
 
@@ -188,7 +188,7 @@ mod_results_server <- function(id, data, model) {
     # Tables
 
     observe({
-      rv$data1 <- mtcars
+      rv$data1 <- datasets::mtcars
     })
 
     output$table_1 <- DT::renderDT(data_table(rv$data1))
@@ -204,12 +204,12 @@ mod_results_server <- function(id, data, model) {
     output$download_table_1 <- downloadHandler(
       filename = "runbisonpic_table_1.csv",
       content = function(file) {
-        write.csv(rv$data1, file)
+        utils::write.csv(rv$data1, file)
       }
     )
 
     observe({
-      rv$data2 <- beaver2
+      rv$data2 <- datasets::beaver2
     })
 
     output$table_2 <- DT::renderDT(data_table(rv$data2))
@@ -225,12 +225,12 @@ mod_results_server <- function(id, data, model) {
     output$download_table_2 <- downloadHandler(
       filename = "runbisonpic_table_2.csv",
       content = function(file) {
-        write.csv(rv$data2, file)
+        utils::write.csv(rv$data2, file)
       }
     )
 
     observe({
-      rv$data3 <- women
+      rv$data3 <- datasets::women
     })
 
     output$table_3 <- DT::renderDT(data_table(rv$data3))
@@ -246,7 +246,7 @@ mod_results_server <- function(id, data, model) {
     output$download_table_3 <- downloadHandler(
       filename = "runbisonpic_table_3.csv",
       content = function(file) {
-        write.csv(rv$data3, file)
+        utils::write.csv(rv$data3, file)
       }
     )
 
