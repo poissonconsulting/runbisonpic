@@ -18,7 +18,8 @@ mod_about_ui <- function(id, label = "about") {
   box(
     width = 12,
     collapsible = FALSE,
-    includeMarkdown(system.file(package = "runbisonpic", "helpfiles/about.md"))
+    uiOutput(ns("ui_about")),
+    uiOutput(ns("ui_text_1"))
   )
 }
 
@@ -27,5 +28,25 @@ mod_about_ui <- function(id, label = "about") {
 mod_about_server <- function(id) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
+
+    output$ui_about <- renderUI({
+      includeMarkdown(
+        system.file(package = "runbisonpic", "helpfiles/about.md")
+      )
+    })
+
+    output$text_1 <- renderText({
+      paste0(
+        "bisonpictools version: ",
+        as.character(utils::packageVersion("bisonpictools")),
+        "<br/>",
+        "runbisonpic version: ",
+        as.character(utils::packageVersion("shinybisonpic"))
+      )
+    })
+
+    output$ui_text_1 <- renderUI({
+      htmlOutput(ns("text_1"))
+    })
   })
 }
