@@ -178,8 +178,8 @@ mod_upload_server <- function(id) {
 
       rv$data <- data
       rv$state <- "upload"
-      },
-      label = "generating data"
+    },
+    label = "generating data"
     )
 
     observe({
