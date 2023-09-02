@@ -1,0 +1,10 @@
+name: runbisonpic-dev
+title:
+username: poissonconsulting
+account: poissonconsulting
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 9746956
+bundleId: 7636685
+url: https://poissonconsulting.shinyapps.io/runbisonpic-dev/
+version: 1
