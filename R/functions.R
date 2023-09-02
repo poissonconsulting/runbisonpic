@@ -82,6 +82,34 @@ data_table <- function(data) {
   )
 }
 
+simple_table <- function(data) {
+  DT::datatable(
+    data,
+    escape = FALSE,
+    rownames = FALSE,
+    selection = "none",
+    class = "row-border",
+    extensions = "FixedColumns",
+    options = list(
+      fixedColumns = list(leftColumns = 1),
+      ordering = FALSE,
+      autowidth = TRUE,
+      scrollX = TRUE,
+      lengthChange = FALSE,
+      searching = FALSE,
+      info = FALSE,
+      paging = FALSE,
+      columnDefs = list(
+        list(
+          className = "dt-center",
+          targets = "_all"
+        )
+      )
+    )
+  )
+}
+
+
 # Check Functions ----
 
 check_modal <- function(check, ns,

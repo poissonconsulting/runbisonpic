@@ -103,7 +103,7 @@ mod_model_server <- function(id, data) {
     })
 
     output$table <- DT::renderDT({
-      data_table(rv$model_table)
+      simple_table(rv$model_table)
     })
   })
 }
