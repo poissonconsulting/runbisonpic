@@ -1,0 +1,4 @@
+Name: Start runbisonpic app
+Description: Launch the runbisonpic app in a web browser
+Binding: runbisonpic_addin
+Interactive: true
