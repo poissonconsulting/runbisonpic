@@ -141,5 +141,7 @@ mod_model_server <- function(id, data) {
         rv$model_table <- NULL
       }
     })
+
+    return(rv)
   })
 }

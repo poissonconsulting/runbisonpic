@@ -101,9 +101,21 @@ mod_results_server <- function(id, data, model) {
       plot_3 = NULL
     )
 
+    ### TO DO
+    # test data sets as place holder
+    # will need to update if condition once model built in
+    observe({
+      if (!is.null(model$model_table)) {
+        rv$data1 <- datasets::mtcars
+        rv$data2 <- datasets::beaver2
+        rv$data3 <- datasets::women
+      }
+    })
+
     # Plots
     output$plot_1 <- renderPlot({
-      rv$plot_1 <- plot(datasets::mtcars$mpg ~ datasets::mtcars$disp)
+      req(rv$data1)
+      rv$plot_1 <- plot(rv$data1$mpg ~ rv$data1$disp)
       rv$plot_1
     })
 
@@ -112,24 +124,27 @@ mod_results_server <- function(id, data, model) {
     })
 
     output$download_button_p1 <- renderUI({
+      req(rv$data1)
       downloadButton(ns("download_plot_1"), "Plot", class = "btn-plot")
     })
 
     output$download_plot_1 <- downloadHandler(
       filename = "runbisonpic_plot_1.png",
       content = function(file) {
-        plot <- rv$plot_1 +
-          ggplot2::ggtitle("Plot 1 title")
+        # plot <- rv$plot_1 +
+        #   ggplot2::ggtitle("Plot 1 title")
         ggplot2::ggsave(
           file,
-          plot,
+          rv$plot_1,
           device = "png"
         )
       }
     )
 
     output$plot_2 <- renderPlot({
-      rv$plot_2 <- plot(datasets::mtcars$drat ~ datasets::mtcars$cyl)
+      req(rv$data1)
+
+      rv$plot_2 <- plot(rv$data1$drat ~ rv$data1$cyl)
       rv$plot_2
     })
 
@@ -138,24 +153,26 @@ mod_results_server <- function(id, data, model) {
     })
 
     output$download_button_p2 <- renderUI({
+      req(rv$data1)
       downloadButton(ns("download_plot_2"), "Plot", class = "btn-plot")
     })
 
     output$download_plot_2 <- downloadHandler(
       filename = "runbisonpic_plot_2.png",
       content = function(file) {
-        plot <- rv$plot_2 +
-          ggplot2::ggtitle("Plot 2 title")
+        # plot <- rv$plot_2 +
+        #   ggplot2::ggtitle("Plot 2 title")
         ggplot2::ggsave(
           file,
-          plot,
+          rv$plot_2,
           device = "png"
         )
       }
     )
 
     output$plot_3 <- renderPlot({
-      rv$plot_3 <- plot(datasets::mtcars$gear ~ datasets::mtcars$hp)
+      req(rv$data1)
+      rv$plot_3 <- plot(rv$data1$gear ~ rv$data1$hp)
       rv$plot_3
     })
 
@@ -164,27 +181,24 @@ mod_results_server <- function(id, data, model) {
     })
 
     output$download_button_p3 <- renderUI({
+      req(rv$data1)
       downloadButton(ns("download_plot_3"), "Plot", class = "btn-plot")
     })
 
     output$download_plot_3 <- downloadHandler(
       filename = "runbisonpic_plot_3.png",
       content = function(file) {
-        plot <- rv$plot_3 +
-          ggplot2::ggtitle("Plot 3 title")
+        # plot <- rv$plot_3 +
+        #   ggplot2::ggtitle("Plot 3 title")
         ggplot2::ggsave(
           file,
-          plot,
+          rv$plot_3,
           device = "png"
         )
       }
     )
 
     # Tables
-
-    observe({
-      rv$data1 <- datasets::mtcars
-    })
 
     output$table_1 <- DT::renderDT(data_table(rv$data1))
 
@@ -193,6 +207,7 @@ mod_results_server <- function(id, data, model) {
     })
 
     output$download_button_t1 <- renderUI({
+      req(rv$data1)
       downloadButton(ns("download_table_1"), "Table", class = "btn-tbl")
     })
 
@@ -203,10 +218,6 @@ mod_results_server <- function(id, data, model) {
       }
     )
 
-    observe({
-      rv$data2 <- datasets::beaver2
-    })
-
     output$table_2 <- DT::renderDT(data_table(rv$data2))
 
     output$ui_table_2 <- renderUI({
@@ -214,6 +225,7 @@ mod_results_server <- function(id, data, model) {
     })
 
     output$download_button_t2 <- renderUI({
+      req(rv$data2)
       downloadButton(ns("download_table_2"), "Table", class = "btn-tbl")
     })
 
@@ -224,10 +236,6 @@ mod_results_server <- function(id, data, model) {
       }
     )
 
-    observe({
-      rv$data3 <- datasets::women
-    })
-
     output$table_3 <- DT::renderDT(data_table(rv$data3))
 
     output$ui_table_3 <- renderUI({
@@ -235,6 +243,7 @@ mod_results_server <- function(id, data, model) {
     })
 
     output$download_button_t3 <- renderUI({
+      req(rv$data3)
       downloadButton(ns("download_table_3"), "Table", class = "btn-tbl")
     })
 
@@ -244,5 +253,14 @@ mod_results_server <- function(id, data, model) {
         utils::write.csv(rv$data3, file)
       }
     )
+
+    observe({
+      if (is.null(model$model_table)) {
+        rv$data1 <- NULL
+        rv$data2 <- NULL
+        rv$data3 <- NULL
+      }
+    })
+
   })
 }
