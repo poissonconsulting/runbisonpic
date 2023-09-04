@@ -21,30 +21,24 @@ mod_results_ui <- function(id, label = "model") {
     tabsetPanel(
       tabPanel(
         title = "1. Plot",
-        wellPanel(
-          br(),
-          uiOutput(ns("download_button_p1")),
-          br(), br(),
-          uiOutput(ns("ui_plot_1"))
-        )
+        br(),
+        uiOutput(ns("download_button_p1")),
+        br(), br(),
+        uiOutput(ns("ui_plot_1"))
       ),
       tabPanel(
         title = "2. Plot",
-        wellPanel(
-          br(),
-          uiOutput(ns("download_button_p2")),
-          br(), br(),
-          uiOutput(ns("ui_plot_2"))
-        )
+        br(),
+        uiOutput(ns("download_button_p2")),
+        br(), br(),
+        uiOutput(ns("ui_plot_2"))
       ),
       tabPanel(
         title = "3. Plot",
-        wellPanel(
-          br(),
-          uiOutput(ns("download_button_p3")),
-          br(), br(),
-          uiOutput(ns("ui_plot_3"))
-        )
+        br(),
+        uiOutput(ns("download_button_p3")),
+        br(), br(),
+        uiOutput(ns("ui_plot_3"))
       )
     )
   )
@@ -55,30 +49,24 @@ mod_results_ui <- function(id, label = "model") {
     tabsetPanel(
       tabPanel(
         title = "1. Table",
-        wellPanel(
-          br(),
-          uiOutput(ns("download_button_t1")),
-          br(), br(),
-          uiOutput(ns("ui_table_1"))
-        )
+        br(),
+        uiOutput(ns("download_button_t1")),
+        br(), br(),
+        uiOutput(ns("ui_table_1"))
       ),
       tabPanel(
-        title = "2. Table",
-        wellPanel(
-          br(),
-          uiOutput(ns("download_button_t2")),
-          br(), br(),
-          uiOutput(ns("ui_table_2"))
-        )
+      title = "2. Table",
+        br(),
+        uiOutput(ns("download_button_t2")),
+        br(), br(),
+        uiOutput(ns("ui_table_2"))
       ),
       tabPanel(
         title = "3. Table",
-        wellPanel(
-          br(),
-          uiOutput(ns("download_button_t3")),
-          br(), br(),
-          uiOutput(ns("ui_table_3"))
-        )
+        br(),
+        uiOutput(ns("download_button_t3")),
+        br(), br(),
+        uiOutput(ns("ui_table_3"))
       )
     )
   )
@@ -120,6 +108,7 @@ mod_results_server <- function(id, data, model) {
     })
 
     output$ui_plot_1 <- renderUI({
+      req(rv$data1)
       plotOutput(ns("plot_1"))
     })
 
@@ -149,6 +138,7 @@ mod_results_server <- function(id, data, model) {
     })
 
     output$ui_plot_2 <- renderUI({
+      req(rv$data1)
       plotOutput(ns("plot_2"))
     })
 
@@ -177,6 +167,7 @@ mod_results_server <- function(id, data, model) {
     })
 
     output$ui_plot_3 <- renderUI({
+      req(rv$data1)
       plotOutput(ns("plot_3"))
     })
 
@@ -203,6 +194,7 @@ mod_results_server <- function(id, data, model) {
     output$table_1 <- DT::renderDT(data_table(rv$data1))
 
     output$ui_table_1 <- renderUI({
+      req(rv$data1)
       DT::DTOutput(ns("table_1"))
     })
 
@@ -221,6 +213,7 @@ mod_results_server <- function(id, data, model) {
     output$table_2 <- DT::renderDT(data_table(rv$data2))
 
     output$ui_table_2 <- renderUI({
+      req(rv$data2)
       DT::DTOutput(ns("table_2"))
     })
 
@@ -239,6 +232,7 @@ mod_results_server <- function(id, data, model) {
     output$table_3 <- DT::renderDT(data_table(rv$data3))
 
     output$ui_table_3 <- renderUI({
+      req(rv$data3)
       DT::DTOutput(ns("table_3"))
     })
 
