@@ -31,6 +31,9 @@ mod_model_ui <- function(id, label = "results") {
   output <- bs4Dash::box(
     width = 12,
     title = "Output",
+    br(),
+    uiOutput(ns("download_button")),
+    br(), br(),
     uiOutput(ns("ui_table"))
   )
 
@@ -119,6 +122,24 @@ mod_model_server <- function(id, data) {
 
     output$table <- DT::renderDT({
       simple_table(rv$model_table)
+    })
+
+    output$download_button <- renderUI({
+      req(rv$model_table)
+      downloadButton(ns("download_table"), "Table", class = "btn-tbl")
+    })
+
+    output$download_table <- downloadHandler(
+      filename = "runbisonpic_model.csv",
+      content = function(file) {
+        utils::write.csv(rv$model_table, file)
+      }
+    )
+
+    observe({
+      if (is.null(data$state)) {
+        rv$model_table <- NULL
+      }
     })
   })
 }
