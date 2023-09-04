@@ -89,6 +89,21 @@ mod_model_server <- function(id, data) {
     w <- waiter_model()
 
     observeEvent(input$run, {
+      ## TO DO
+      # checks if no data is present to not run model
+      # confirm at end of app this is still valid with structure
+      if (is.null(data$data)) {
+        return(
+          showModal(
+            modalDialog(
+              "No data has been uploaded, go to the Upload Data tab and upload your data.",
+              title = "Please fix the following issue ...",
+              footer = modalButton("Got it")
+            )
+          )
+        )
+      }
+
       w$show()
       # TO DO: switch out for model code
       Sys.sleep(5)
