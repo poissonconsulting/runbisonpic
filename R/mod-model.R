@@ -23,8 +23,7 @@ mod_model_ui <- function(id, label = "results") {
       size = "l"
     ),
     uiOutput(ns("ui_thinning")),
-    uiOutput(ns("ui_herd_size")),
-    uiOutput(ns("ui_coef_variation")),
+    uiOutput(ns("ui_model_type")),
     actionButton(ns("run"), "Run")
   )
 
@@ -32,7 +31,8 @@ mod_model_ui <- function(id, label = "results") {
     width = 12,
     title = "Output",
     br(),
-    uiOutput(ns("download_button")),
+    uiOutput(ns("download_button_tbl")),
+    uiOutput(ns("download_button_analysis")),
     br(), br(),
     uiOutput(ns("ui_table"))
   )
@@ -57,7 +57,7 @@ mod_model_server <- function(id, data) {
       data$reset
       numericInput(
         ns("thinning"),
-        label = "Model Thinning",
+        label = "Thinning",
         value = 50,
         min = 1,
         max = 10000,
@@ -65,27 +65,12 @@ mod_model_server <- function(id, data) {
       )
     })
 
-    output$ui_herd_size <- renderUI({
+    output$ui_model_type <- renderUI({
       data$reset
-      numericInput(
-        ns("herd_size"),
-        label = "Initial Herd Size",
-        value = 200,
-        min = 1,
-        max = 10000,
-        step = 100
-      )
-    })
-
-    output$ui_coef_variation <- renderUI({
-      data$reset
-      numericInput(
-        ns("coef_variation"),
-        label = "Coefficeint of Variation",
-        value = 0.05,
-        min = 0,
-        max = 1,
-        step = 0.05
+      selectInput(
+        ns("model_type"),
+        label = "Model Type",
+        choices = c("report", "quick", "debug")
       )
     })
 
@@ -108,11 +93,15 @@ mod_model_server <- function(id, data) {
       }
 
       w$show()
-      # TO DO: switch out for model code
-      Sys.sleep(5)
-      mod <- stats::lm(f1 ~ f0, data = data$data$event)
-      mod_sum <- summary(mod)
-      rv$model_table <- data.frame(mod_sum$fstatistic)
+      rv$analysis <- bisonpictools::bpt_analyse(
+        event_data = bpt_event_data,
+        location_data = bpt_location_data,
+        census_data = bpt_census_data,
+        proportion_calf_data = bpt_proportion_calf_data,
+        nthin = input$thinning,
+        analysis_mode = input$model_type
+      )
+      rv$model_table <- embr::glance(rv$analysis)
       w$hide()
     })
 
@@ -124,18 +113,32 @@ mod_model_server <- function(id, data) {
       simple_table(rv$model_table)
     })
 
-    output$download_button <- renderUI({
+    # Download
+    output$download_button_analysis <- renderUI({
+      req(rv$analysis)
+      downloadButton(ns("download_analysis"), "Analysis Object", class = "btn-tbl")
+    })
+
+    output$download_analysis <- downloadHandler(
+      filename = "runbisonpic_analysis.rds",
+      content = function(file) {
+        saveRDS(rv$analysis, file)
+      }
+    )
+
+    output$download_button_tbl <- renderUI({
       req(rv$model_table)
       downloadButton(ns("download_table"), "Table", class = "btn-tbl")
     })
 
     output$download_table <- downloadHandler(
-      filename = "runbisonpic_model.csv",
+      filename = "runbisonpic_glance.csv",
       content = function(file) {
         utils::write.csv(rv$model_table, file)
       }
     )
 
+    # clean up
     observe({
       if (is.null(data$state)) {
         rv$model_table <- NULL
