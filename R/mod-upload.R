@@ -48,7 +48,6 @@ mod_upload_server <- function(id) {
       state = NULL
     )
 
-    # TO DO update with template for model
     # read in template
     path <- system.file(
       package = "bisonpictools",
@@ -157,18 +156,15 @@ mod_upload_server <- function(id) {
       names(data) <- sheets_data
 
       # check types match
-      # TO DO Turn on when ready in bisonpictools
       data <- try(
-        # bisonpictools:::bpt_check_data(
-        #   location = data$location,
-        #   event = data$event,
-        #   template_model
-        # )
-        chktemplate::check_data_format(
+        bisonpictools::bpt_check_data(
           location = data$location,
           event = data$event,
-          template = bisonpictools::template,
-          complete = TRUE
+          census = data$census,
+          proportion_calf = data$proportion_calf,
+          complete = TRUE,
+          join = TRUE,
+          check_study_years = TRUE
         ),
         silent = TRUE
       )
