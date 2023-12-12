@@ -124,17 +124,6 @@ mod_results_server <- function(id, data, model) {
       table_rat = NULL
     )
 
-    ### TO DO
-    # test data sets as place holder
-    # will need to update if condition once model built in
-    observe({
-      if (!is.null(model$model_table)) {
-        rv$data1 <- datasets::mtcars
-        rv$data2 <- datasets::beaver2
-        rv$data3 <- datasets::women
-      }
-    })
-
     # Plots
     output$plot_ac <- renderPlot({
       req(model$analysis)
