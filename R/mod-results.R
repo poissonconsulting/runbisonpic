@@ -24,35 +24,35 @@ mod_results_ui <- function(id, label = "model") {
         br(),
         uiOutput(ns("download_button_p1")),
         br(), br(),
-        uiOutput(ns("ui_plot_1"))
+        uiOutput(ns("ui_plot_ac"))
       ),
       tabPanel(
         title = "2. Abundance Total",
         br(),
         uiOutput(ns("download_button_p2")),
         br(), br(),
-        uiOutput(ns("ui_plot_2"))
+        uiOutput(ns("ui_plot_at"))
       ),
       tabPanel(
         title = "3. Survival",
         br(),
         uiOutput(ns("download_button_p3")),
         br(), br(),
-        uiOutput(ns("ui_plot_3"))
+        uiOutput(ns("ui_plot_surv"))
       ),
       tabPanel(
         title = "4. Fecundity",
         br(),
         uiOutput(ns("download_button_p4")),
         br(), br(),
-        uiOutput(ns("ui_plot_4"))
+        uiOutput(ns("ui_plot_fec"))
       ),
       tabPanel(
         title = "5. Ratios",
         br(),
         uiOutput(ns("download_button_p5")),
         br(), br(),
-        uiOutput(ns("ui_plot_5"))
+        uiOutput(ns("ui_plot_rat"))
       )
     )
   )
@@ -62,25 +62,39 @@ mod_results_ui <- function(id, label = "model") {
     title = "Tables",
     tabsetPanel(
       tabPanel(
-        title = "1. Table",
+        title = "1. Abundance Class",
         br(),
-        uiOutput(ns("download_button_t1")),
+        uiOutput(ns("download_button_ac")),
         br(), br(),
-        uiOutput(ns("ui_table_1"))
+        uiOutput(ns("ui_table_ac"))
       ),
       tabPanel(
-      title = "2. Table",
+      title = "2. Abundance Total",
         br(),
-        uiOutput(ns("download_button_t2")),
+        uiOutput(ns("download_button_at")),
         br(), br(),
-        uiOutput(ns("ui_table_2"))
+        uiOutput(ns("ui_table_at"))
       ),
       tabPanel(
-        title = "3. Table",
+        title = "3. Survival",
         br(),
-        uiOutput(ns("download_button_t3")),
+        uiOutput(ns("download_button_surv")),
         br(), br(),
-        uiOutput(ns("ui_table_3"))
+        uiOutput(ns("ui_table_surv"))
+      ),
+      tabPanel(
+        title = "4. Fecundity",
+        br(),
+        uiOutput(ns("download_button_fec")),
+        br(), br(),
+        uiOutput(ns("ui_table_fec"))
+      ),
+      tabPanel(
+        title = "5. Ratios",
+        br(),
+        uiOutput(ns("download_button_rat")),
+        br(), br(),
+        uiOutput(ns("ui_table_rat"))
       )
     )
   )
@@ -98,9 +112,16 @@ mod_results_server <- function(id, data, model) {
     ns <- session$ns
 
     rv <- reactiveValues(
-      plot_1 = NULL,
-      plot_2 = NULL,
-      plot_3 = NULL
+      plot_ac = NULL,
+      plot_at = NULL,
+      plot_surv = NULL,
+      plot_fec = NULL,
+      plot_rat = NULL,
+      table_ac = NULL,
+      table_at = NULL,
+      table_surv = NULL,
+      table_fec = NULL,
+      table_rat = NULL
     )
 
     ### TO DO
@@ -115,33 +136,33 @@ mod_results_server <- function(id, data, model) {
     })
 
     # Plots
-    output$plot_1 <- renderPlot({
+    output$plot_ac <- renderPlot({
       req(model$analysis)
-      rv$plot_1 <- bisonpictools::bpt_plot_predictions(
+      rv$plot_ac <- bisonpictools::bpt_plot_predictions(
         model$analysis,
         "abundance-class"
       )
-      rv$plot_1
+      rv$plot_ac
     })
 
-    output$ui_plot_1 <- renderUI({
+    output$ui_plot_ac <- renderUI({
       req(model$analysis)
-      plotOutput(ns("plot_1"))
+      plotOutput(ns("plot_ac"))
     })
 
     output$download_button_p1 <- renderUI({
       req(model$analysis)
       downloadButton(
-        ns("download_plot_1"),
+        ns("download_plot_ac"),
         "Plot",
         class = "btn-plot"
       )
     })
 
-    output$download_plot_1 <- downloadHandler(
+    output$download_plot_ac <- downloadHandler(
       filename = "runbisonpic_plot_abundance_class.png",
       content = function(file) {
-         plot <- rv$plot_1 +
+         plot <- rv$plot_ac +
            ggplot2::ggtitle("Abundance Class")
         ggplot2::ggsave(
           file,
@@ -151,29 +172,29 @@ mod_results_server <- function(id, data, model) {
       }
     )
 
-    output$plot_2 <- renderPlot({
+    output$plot_at <- renderPlot({
       req(model$analysis)
-      rv$plot_2 <- bisonpictools::bpt_plot_predictions(
+      rv$plot_at <- bisonpictools::bpt_plot_predictions(
         model$analysis,
         "abundance-total"
       )
-      rv$plot_2
+      rv$plot_at
     })
 
-    output$ui_plot_2 <- renderUI({
+    output$ui_plot_at <- renderUI({
       req(model$analysis)
-      plotOutput(ns("plot_2"))
+      plotOutput(ns("plot_at"))
     })
 
     output$download_button_p2 <- renderUI({
       req(model$analysis)
-      downloadButton(ns("download_plot_2"), "Plot", class = "btn-plot")
+      downloadButton(ns("download_plot_at"), "Plot", class = "btn-plot")
     })
 
-    output$download_plot_2 <- downloadHandler(
+    output$download_plot_at <- downloadHandler(
       filename = "runbisonpic_plot_abundance_total.png",
       content = function(file) {
-        plot <- rv$plot_2 +
+        plot <- rv$plot_at +
           ggplot2::ggtitle("Abundance Total")
         ggplot2::ggsave(
           file,
@@ -183,29 +204,29 @@ mod_results_server <- function(id, data, model) {
       }
     )
 
-    output$plot_3 <- renderPlot({
+    output$plot_surv <- renderPlot({
       req(model$analysis)
-      rv$plot_3 <-  bisonpictools::bpt_plot_predictions(
+      rv$plot_surv <-  bisonpictools::bpt_plot_predictions(
         model$analysis,
         "survival"
       )
-      rv$plot_3
+      rv$plot_surv
     })
 
-    output$ui_plot_3 <- renderUI({
+    output$ui_plot_surv <- renderUI({
       req(model$analysis)
-      plotOutput(ns("plot_3"))
+      plotOutput(ns("plot_surv"))
     })
 
     output$download_button_p3 <- renderUI({
       req(model$analysis)
-      downloadButton(ns("download_plot_3"), "Plot", class = "btn-plot")
+      downloadButton(ns("download_plot_surv"), "Plot", class = "btn-plot")
     })
 
-    output$download_plot_3 <- downloadHandler(
+    output$download_plot_surv <- downloadHandler(
       filename = "runbisonpic_plot_survival.png",
       content = function(file) {
-        plot <- rv$plot_3 +
+        plot <- rv$plot_surv +
           ggplot2::ggtitle("Survival")
         ggplot2::ggsave(
           file,
@@ -215,29 +236,29 @@ mod_results_server <- function(id, data, model) {
       }
     )
 
-    output$plot_4 <- renderPlot({
+    output$plot_fec <- renderPlot({
       req(model$analysis)
-      rv$plot_4 <- bisonpictools::bpt_plot_predictions(
+      rv$plot_fec <- bisonpictools::bpt_plot_predictions(
         model$analysis,
         "fecundity"
       )
-      rv$plot_4
+      rv$plot_fec
     })
 
-    output$ui_plot_4 <- renderUI({
+    output$ui_plot_fec <- renderUI({
       req(model$analysis)
-      plotOutput(ns("plot_4"))
+      plotOutput(ns("plot_fec"))
     })
 
     output$download_button_p4 <- renderUI({
       req(model$analysis)
-      downloadButton(ns("download_plot_4"), "Plot", class = "btn-plot")
+      downloadButton(ns("download_plot_fec"), "Plot", class = "btn-plot")
     })
 
-    output$download_plot_4 <- downloadHandler(
+    output$download_plot_fec <- downloadHandler(
       filename = "runbisonpic_plot_fecundity.png",
       content = function(file) {
-        plot <- rv$plot_4 +
+        plot <- rv$plot_fec +
           ggplot2::ggtitle("Fecundity")
         ggplot2::ggsave(
           file,
@@ -247,29 +268,29 @@ mod_results_server <- function(id, data, model) {
       }
     )
 
-    output$plot_5 <- renderPlot({
+    output$plot_rat <- renderPlot({
       req(model$analysis)
-      rv$plot_5 <- bisonpictools::bpt_plot_predictions(
+      rv$plot_rat <- bisonpictools::bpt_plot_predictions(
         model$analysis,
         "ratios"
       )
-      rv$plot_5
+      rv$plot_rat
     })
 
-    output$ui_plot_5 <- renderUI({
+    output$ui_plot_rat <- renderUI({
       req(model$analysis)
-      plotOutput(ns("plot_5"))
+      plotOutput(ns("plot_rat"))
     })
 
     output$download_button_p5 <- renderUI({
       req(model$analysis)
-      downloadButton(ns("download_plot_5"), "Plot", class = "btn-plot")
+      downloadButton(ns("download_plot_rat"), "Plot", class = "btn-plot")
     })
 
-    output$download_plot_5 <- downloadHandler(
+    output$download_plot_rat <- downloadHandler(
       filename = "runbisonpic_plot_ratios.png",
       content = function(file) {
-        plot <- rv$plot_5 +
+        plot <- rv$plot_rat +
           ggplot2::ggtitle("Ratios")
         ggplot2::ggsave(
           file,
@@ -281,68 +302,125 @@ mod_results_server <- function(id, data, model) {
 
     # Tables
 
-    output$table_1 <- DT::renderDT(data_table(rv$data1))
+    output$table_ac <- DT::renderDT(
+      rv$pred_ac <- bisonpictools::bpt_predict_abundance_class(model$analysis)
+    )
 
-    output$ui_table_1 <- renderUI({
-      req(rv$data1)
-      DT::DTOutput(ns("table_1"))
+    output$ui_table_ac <- renderUI({
+      req(model$analysis)
+      DT::DTOutput(ns("table_ac"))
     })
 
-    output$download_button_t1 <- renderUI({
-      req(rv$data1)
-      downloadButton(ns("download_table_1"), "Table", class = "btn-tbl")
+    output$download_button_ac <- renderUI({
+      req(rv$pred_ac)
+      downloadButton(ns("download_table_ac"), "Table", class = "btn-tbl")
     })
 
-    output$download_table_1 <- downloadHandler(
-      filename = "runbisonpic_table_1.csv",
+    output$download_table_ac <- downloadHandler(
+      filename = "runbisonpic_table_abundance_class.csv",
       content = function(file) {
-        utils::write.csv(rv$data1, file)
+        utils::write.csv(rv$pred_ac, file)
       }
     )
 
-    output$table_2 <- DT::renderDT(data_table(rv$data2))
+    output$table_at <- DT::renderDT(
+      rv$pred_at <- bisonpictools::bpt_predict_abundance_total(model$analysis)
+    )
 
-    output$ui_table_2 <- renderUI({
-      req(rv$data2)
-      DT::DTOutput(ns("table_2"))
+    output$ui_table_at <- renderUI({
+      req(model$analysis)
+      DT::DTOutput(ns("table_at"))
     })
 
-    output$download_button_t2 <- renderUI({
-      req(rv$data2)
-      downloadButton(ns("download_table_2"), "Table", class = "btn-tbl")
+    output$download_button_at <- renderUI({
+      req(rv$pred_at)
+      downloadButton(ns("download_table_at"), "Table", class = "btn-tbl")
     })
 
-    output$download_table_2 <- downloadHandler(
-      filename = "runbisonpic_table_2.csv",
+    output$download_table_at <- downloadHandler(
+      filename = "runbisonpic_table_abundance_total.csv",
       content = function(file) {
-        utils::write.csv(rv$data2, file)
+        utils::write.csv(rv$pred_at, file)
       }
     )
 
-    output$table_3 <- DT::renderDT(data_table(rv$data3))
+    output$table_surv <- DT::renderDT(
+      rv$pred_surv <- bisonpictools::bpt_predict_survival(model$analysis)
+    )
 
-    output$ui_table_3 <- renderUI({
-      req(rv$data3)
-      DT::DTOutput(ns("table_3"))
+    output$ui_table_surv <- renderUI({
+      req(model$analysis)
+      DT::DTOutput(ns("table_surv"))
     })
 
-    output$download_button_t3 <- renderUI({
-      req(rv$data3)
-      downloadButton(ns("download_table_3"), "Table", class = "btn-tbl")
+    output$download_button_surv <- renderUI({
+      req(rv$pred_surv)
+      downloadButton(ns("download_table_surv"), "Table", class = "btn-tbl")
     })
 
-    output$download_table_3 <- downloadHandler(
-      filename = "runbisonpic_table_3.csv",
+    output$download_table_surv <- downloadHandler(
+      filename = "runbisonpic_table_survival.csv",
       content = function(file) {
-        utils::write.csv(rv$data3, file)
+        utils::write.csv(rv$pred_surv, file)
       }
     )
 
+    output$table_fec <- DT::renderDT(
+      rv$pred_fec <- bisonpictools::bpt_predict_fecundity(model$analysis)
+    )
+
+    output$ui_table_fec <- renderUI({
+      req(model$analysis)
+      DT::DTOutput(ns("table_fec"))
+    })
+
+    output$download_button_fec <- renderUI({
+      req(rv$pred_fec)
+      downloadButton(ns("download_table_fec"), "Table", class = "btn-tbl")
+    })
+
+    output$download_table_fec <- downloadHandler(
+      filename = "runbisonpic_table_fecundity.csv",
+      content = function(file) {
+        utils::write.csv(rv$pred_fec, file)
+      }
+    )
+
+    output$table_rat <- DT::renderDT(
+      rv$pred_rat <- bisonpictools::bpt_predict_ratios(model$analysis)
+    )
+
+    output$ui_table_rat <- renderUI({
+      req(model$analysis)
+      DT::DTOutput(ns("table_rat"))
+    })
+
+    output$download_button_rat <- renderUI({
+      req(rv$pred_rat)
+      downloadButton(ns("download_table_rat"), "Table", class = "btn-tbl")
+    })
+
+    output$download_table_rat <- downloadHandler(
+      filename = "runbisonpic_table_ratios.csv",
+      content = function(file) {
+        utils::write.csv(rv$pred_rat, file)
+      }
+    )
+
+    # Reset objects
     observe({
       if (is.null(model$model_table)) {
-        rv$data1 <- NULL
-        rv$data2 <- NULL
-        rv$data3 <- NULL
+        rv$pred_ac <- NULL
+        rv$pred_at <- NULL
+        rv$pred_surv <- NULL
+        rv$pred_fec <- NULL
+        rv$pred_rat <- NULL
+
+        rv$plot_ac <- NULL
+        rv$plot_at <- NULL
+        rv$plot_surv <- NULL
+        rv$plot_fec <- NULL
+        rv$plot_rat <- NULL
       }
     })
 
