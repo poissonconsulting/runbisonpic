@@ -58,7 +58,7 @@ mod_model_server <- function(id, data) {
       numericInput(
         ns("thinning"),
         label = "Thinning",
-        value = 50,
+        value = 1,
         min = 1,
         max = 10000,
         step = 100
@@ -70,7 +70,8 @@ mod_model_server <- function(id, data) {
       selectInput(
         ns("model_type"),
         label = "Model Type",
-        choices = c("report", "quick", "debug")
+        choices = c("report", "quick", "debug"),
+        selected = "quick"
       )
     })
 
