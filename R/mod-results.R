@@ -16,7 +16,11 @@ mod_results_ui <- function(id, label = "model") {
   ns <- NS(id)
 
   plots <- bs4Dash::box(
-    title = "Plots",
+    title = shinyhelper::helper(
+      div(HTML(glue::glue("Plots &nbsp &nbsp &nbsp"))),
+      content = "result-plot",
+      size = "l"
+    ),
     width = 12,
     tabsetPanel(
       tabPanel(
@@ -59,7 +63,11 @@ mod_results_ui <- function(id, label = "model") {
 
   tables <- bs4Dash::box(
     width = 12,
-    title = "Tables",
+    title = shinyhelper::helper(
+      div(HTML(glue::glue("Tables &nbsp &nbsp &nbsp"))),
+      content = "result-table",
+      size = "l"
+    ),
     tabsetPanel(
       tabPanel(
         title = "1. Abundance Class",
