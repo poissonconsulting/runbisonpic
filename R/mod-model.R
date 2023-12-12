@@ -94,11 +94,12 @@ mod_model_server <- function(id, data) {
       }
 
       w$show()
+      # TODO: switch out for uploaded data
       rv$analysis <- bisonpictools::bpt_analyse(
-        event_data = bpt_event_data,
-        location_data = bpt_location_data,
-        census_data = bpt_census_data,
-        proportion_calf_data = bpt_proportion_calf_data,
+        event_data = bisonpictools::bpt_event_data,
+        location_data = bisonpictools::bpt_location_data,
+        census_data = bisonpictools::bpt_census_data,
+        proportion_calf_data = bisonpictools::bpt_proportion_calf_data,
         nthin = input$thinning,
         analysis_mode = input$model_type
       )
