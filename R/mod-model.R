@@ -104,6 +104,7 @@ mod_model_server <- function(id, upload) {
         analysis_mode = input$model_type
       )
       rv$model_table <- embr::glance(rv$analysis)
+      rv$model_table$model_type <- input$model_type
       w$hide()
     })
 
