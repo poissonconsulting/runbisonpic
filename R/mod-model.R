@@ -143,9 +143,14 @@ mod_model_server <- function(id, upload) {
     # clean up
     observe({
       if (is.null(upload$state)) {
-        rv$model_table <- NULL
         rv$analysis <- NULL
+        rv$model_table <- NULL
       }
+    })
+
+    observeEvent(upload$reset, {
+      rv$analysis <- NULL
+      rv$model_table <- NULL
     })
 
     return(rv)

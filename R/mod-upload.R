@@ -142,6 +142,8 @@ mod_upload_server <- function(id) {
 
     # create and display uploaded data
     observeEvent(input$upload, {
+      rv$data <- NULL
+
       sheets_data <- readxl::excel_sheets(input$upload$datapath)
       try_sheet_names <- try(
         check_sheet_names(sheets_data, sheets),
@@ -174,6 +176,7 @@ mod_upload_server <- function(id) {
 
       rv$data <- data
       rv$state <- "upload"
+      rv$reset <- rv$reset + 1
     },
     label = "generating data"
     )
