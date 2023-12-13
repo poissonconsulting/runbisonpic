@@ -144,6 +144,7 @@ mod_model_server <- function(id, upload) {
     observe({
       if (is.null(upload$state)) {
         rv$model_table <- NULL
+        rv$analysis <- NULL
       }
     })
 
