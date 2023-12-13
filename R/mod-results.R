@@ -115,7 +115,7 @@ mod_results_ui <- function(id, label = "model") {
 }
 
 
-mod_results_server <- function(id, data, model) {
+mod_results_server <- function(id, upload, model) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 

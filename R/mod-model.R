@@ -44,7 +44,7 @@ mod_model_ui <- function(id, label = "results") {
 }
 
 
-mod_model_server <- function(id, data) {
+mod_model_server <- function(id, upload) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
@@ -54,7 +54,7 @@ mod_model_server <- function(id, data) {
 
     # control widgets
     output$ui_thinning <- renderUI({
-      data$reset
+      upload$reset
       numericInput(
         ns("thinning"),
         label = "Thinning",
@@ -66,7 +66,7 @@ mod_model_server <- function(id, data) {
     })
 
     output$ui_model_type <- renderUI({
-      data$reset
+      upload$reset
       selectInput(
         ns("model_type"),
         label = "Model Type",
@@ -81,7 +81,7 @@ mod_model_server <- function(id, data) {
       ## TO DO
       # checks if no data is present to not run model
       # confirm at end of app this is still valid with structure
-      if (is.null(data$data)) {
+      if (is.null(upload$data)) {
         return(
           showModal(
             modalDialog(
@@ -96,10 +96,10 @@ mod_model_server <- function(id, data) {
       w$show()
       # TODO: switch out for uploaded data
       rv$analysis <- bisonpictools::bpt_analyse(
-        event_data = bisonpictools::bpt_event_data,
-        location_data = bisonpictools::bpt_location_data,
-        census_data = bisonpictools::bpt_census_data,
-        proportion_calf_data = bisonpictools::bpt_proportion_calf_data,
+        event_data = upload$data$event,
+        location_data = upload$data$location,
+        census_data = upload$data$census,
+        proportion_calf_data = upload$data$proportion_calf,
         nthin = input$thinning,
         analysis_mode = input$model_type
       )
@@ -142,7 +142,7 @@ mod_model_server <- function(id, data) {
 
     # clean up
     observe({
-      if (is.null(data$state)) {
+      if (is.null(upload$state)) {
         rv$model_table <- NULL
       }
     })
