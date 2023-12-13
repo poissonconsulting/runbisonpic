@@ -78,9 +78,6 @@ mod_model_server <- function(id, upload) {
     w <- waiter_model()
 
     observeEvent(input$run, {
-      ## TO DO
-      # checks if no data is present to not run model
-      # confirm at end of app this is still valid with structure
       if (is.null(upload$data)) {
         return(
           showModal(
@@ -94,7 +91,6 @@ mod_model_server <- function(id, upload) {
       }
 
       w$show()
-      # TODO: switch out for uploaded data
       rv$analysis <- bisonpictools::bpt_analyse(
         event_data = upload$data$event,
         location_data = upload$data$location,
