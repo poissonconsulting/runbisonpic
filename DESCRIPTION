@@ -14,17 +14,15 @@ Authors@R: c(
     person("Province of Alberta", role = "cph")
     )
 Description: This app is a wrapper on the `bisonpictools` R package which 
-    provides non R user's a way to model camera trap data. The raw data is first
-    uploaded to `shinybisonpic` which is an app that processes raw data and 
-    prepares it for modeling and lets users explore their data. The 
-    `runbisonpic` app inputs the processed data from `shinybisonpic` and runs
-    a XXXX model and outputs the results as plots and tables. 
+    provides non R user's a way to model camera trap data. Input data,
+    run a STAN model and review the predicted results. 
 License: Apache License (>= 2)
 Imports: 
     bisonpictools,
     bs4Dash,
     chktemplate,
     DT,
+    embr,
     fresh,
     ggplot2,
     glue,

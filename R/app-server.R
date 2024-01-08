@@ -17,18 +17,18 @@ app_server <- function(input, output, session) {
     help_dir = system.file("helpfiles", package = "runbisonpic")
   )
 
-  data <- mod_upload_server(
+  upload <- mod_upload_server(
     "mod_upload_ui"
   )
 
   model <- mod_model_server(
     "mod_model_ui",
-    data
+    upload
   )
 
   mod_results_server(
     "mod_results_ui",
-    data,
+    upload,
     model
   )
 

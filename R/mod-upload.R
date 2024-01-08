@@ -48,7 +48,6 @@ mod_upload_server <- function(id) {
       state = NULL
     )
 
-    # TO DO update with template for model
     # read in template
     path <- system.file(
       package = "bisonpictools",
@@ -143,6 +142,8 @@ mod_upload_server <- function(id) {
 
     # create and display uploaded data
     observeEvent(input$upload, {
+      rv$data <- NULL
+
       sheets_data <- readxl::excel_sheets(input$upload$datapath)
       try_sheet_names <- try(
         check_sheet_names(sheets_data, sheets),
@@ -157,18 +158,15 @@ mod_upload_server <- function(id) {
       names(data) <- sheets_data
 
       # check types match
-      # TO DO Turn on when ready in bisonpictools
       data <- try(
-        # bisonpictools:::bpt_check_data(
-        #   location = data$location,
-        #   event = data$event,
-        #   template_model
-        # )
-        chktemplate::check_data_format(
+        bisonpictools::bpt_check_data(
           location = data$location,
           event = data$event,
-          template = bisonpictools::template,
-          complete = TRUE
+          census = data$census,
+          proportion_calf = data$proportion_calf,
+          complete = TRUE,
+          join = TRUE,
+          check_study_years = TRUE
         ),
         silent = TRUE
       )
@@ -178,6 +176,7 @@ mod_upload_server <- function(id) {
 
       rv$data <- data
       rv$state <- "upload"
+      rv$reset <- rv$reset + 1
     },
     label = "generating data"
     )
