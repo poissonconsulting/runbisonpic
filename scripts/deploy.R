@@ -18,11 +18,3 @@ rsconnect::deployApp(
   appName = "runbisonpic-dev",
   forceUpdate = TRUE
 )
-
-if (FALSE) {
-  rsconnect::deployApp(
-    account = "poissonconsulting",
-    appName = "runbisonpic",
-    forceUpdate = TRUE
-  )
-}
