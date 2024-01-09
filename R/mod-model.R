@@ -82,7 +82,7 @@ mod_model_server <- function(id, upload) {
         return(
           showModal(
             modalDialog(
-              "No data has been uploaded, go to the Upload Data tab and upload your data.",
+              "No data has been uploaded, go to the Upload Data tab and upload data before running the model.",
               title = "Please fix the following issue ...",
               footer = modalButton("Got it")
             )
