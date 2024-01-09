@@ -82,7 +82,8 @@ mod_model_server <- function(id, upload) {
         return(
           showModal(
             modalDialog(
-              "No data has been uploaded, go to the Upload Data tab and upload data before running the model.",
+              "No data has been uploaded, go to the Upload Data tab and upload
+              data before running the model.",
               title = "Please fix the following issue ...",
               footer = modalButton("Got it")
             )
@@ -115,7 +116,11 @@ mod_model_server <- function(id, upload) {
     # Download
     output$download_button_analysis <- renderUI({
       req(rv$analysis)
-      downloadButton(ns("download_analysis"), "Analysis Object", class = "btn-tbl")
+      downloadButton(
+        ns("download_analysis"),
+        "Analysis Object",
+        class = "btn-tbl"
+      )
     })
 
     output$download_analysis <- downloadHandler(
