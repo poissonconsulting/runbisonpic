@@ -77,7 +77,7 @@ mod_results_ui <- function(id, label = "model") {
         uiOutput(ns("ui_table_ac"))
       ),
       tabPanel(
-      title = "2. Abundance Total",
+        title = "2. Abundance Total",
         br(),
         uiOutput(ns("download_button_at")),
         br(), br(),
@@ -155,8 +155,8 @@ mod_results_server <- function(id, upload, model) {
     output$download_plot_ac <- downloadHandler(
       filename = "runbisonpic_plot_abundance_class.png",
       content = function(file) {
-         plot <- rv$plot_ac +
-           ggplot2::ggtitle("Abundance Class")
+        plot <- rv$plot_ac +
+          ggplot2::ggtitle("Abundance Class")
         ggplot2::ggsave(
           file,
           plot,
@@ -199,7 +199,7 @@ mod_results_server <- function(id, upload, model) {
 
     output$plot_surv <- renderPlot({
       req(model$analysis)
-      rv$plot_surv <-  bisonpictools::bpt_plot_predictions(
+      rv$plot_surv <- bisonpictools::bpt_plot_predictions(
         model$analysis,
         "survival"
       )
@@ -421,6 +421,5 @@ mod_results_server <- function(id, upload, model) {
         rv$plot_rat <- NULL
       }
     })
-
   })
 }

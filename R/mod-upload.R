@@ -141,44 +141,45 @@ mod_upload_server <- function(id) {
     })
 
     # create and display uploaded data
-    observeEvent(input$upload, {
-      rv$data <- NULL
+    observeEvent(input$upload,
+      {
+        rv$data <- NULL
 
-      sheets_data <- readxl::excel_sheets(input$upload$datapath)
-      try_sheet_names <- try(
-        check_sheet_names(sheets_data, sheets),
-        silent = TRUE
-      )
-      if (is_try_error(try_sheet_names)) {
-        return(showModal(check_modal(try_sheet_names, ns)))
-      }
-      data <- lapply(sheets_data, function(x) {
-        readxl::read_excel(input$upload$datapath, sheet = x, na = c("", "NA"))
-      })
-      names(data) <- sheets_data
+        sheets_data <- readxl::excel_sheets(input$upload$datapath)
+        try_sheet_names <- try(
+          check_sheet_names(sheets_data, sheets),
+          silent = TRUE
+        )
+        if (is_try_error(try_sheet_names)) {
+          return(showModal(check_modal(try_sheet_names, ns)))
+        }
+        data <- lapply(sheets_data, function(x) {
+          readxl::read_excel(input$upload$datapath, sheet = x, na = c("", "NA"))
+        })
+        names(data) <- sheets_data
 
-      # check types match
-      data <- try(
-        bisonpictools::bpt_check_data(
-          location = data$location,
-          event = data$event,
-          census = data$census,
-          proportion_calf = data$proportion_calf,
-          complete = TRUE,
-          join = TRUE,
-          check_study_years = TRUE
-        ),
-        silent = TRUE
-      )
-      if (is_try_error(data)) {
-        return(showModal(check_modal(data, ns)))
-      }
+        # check types match
+        data <- try(
+          bisonpictools::bpt_check_data(
+            location = data$location,
+            event = data$event,
+            census = data$census,
+            proportion_calf = data$proportion_calf,
+            complete = TRUE,
+            join = TRUE,
+            check_study_years = TRUE
+          ),
+          silent = TRUE
+        )
+        if (is_try_error(data)) {
+          return(showModal(check_modal(data, ns)))
+        }
 
-      rv$data <- data
-      rv$state <- "upload"
-      rv$reset <- rv$reset + 1
-    },
-    label = "generating data"
+        rv$data <- data
+        rv$state <- "upload"
+        rv$reset <- rv$reset + 1
+      },
+      label = "generating data"
     )
 
     observe({
