@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# deploy to poissonconsulting server
+# deploy to poissonconsulting server for testing and feedback
 rsconnect::deployApp(
   account = "poissonconsulting",
   appName = "runbisonpic-dev",
