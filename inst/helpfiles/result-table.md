@@ -5,7 +5,7 @@ Please give the tables time to generate, it may take up to a minute or longer.
 Once a table is visible in the tab there will be a download button present in the top right corner of the tab that downloads a csv file. 
 Each table needs to be downloaded individually. 
 
-#### Types
+#### Tabs
 
 **Abundance Class**
 

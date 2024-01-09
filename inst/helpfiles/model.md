@@ -1,35 +1,66 @@
 ### Run Model Help
 
+Steps to run the model: 
+
+1. Select the thinning.
+2. Select the model type.
+3. Press the run button.
+   - Model may take over 24 hours to run, be patient. 
+   - The run is complete when the Outbox is populated with a table.
+   - If there is an issue a pop up box will appear indicating something is not valid, this must be fixed and the run button will need to be pressed again to restart the model run.
+   - The app has crashed and needs to be restarted if any of the following occur:
+      - The screen goes grey and does not have a white spinner in the middle of the screen. 
+      - A box appears in the bottom left corner saying disconnected.
+      - An error message appears in the Console of RStudio.
+4. Download the results and continue to the next Results tab.
+
 #### Parameters
 
 ##### Thinning
 
-An integer between 1 and 10000.
+- Allowed values are an integer between 1 and 10000.
+- Increase thinning if the model does not converge.
+  - The model did not converge if the converged value in the output table is FALSE. 
+- As the thinning value increases the run time will also increase. 
+  - Start with a small thinning value and increase as needed. 
+  - Thinning is often increased by various values try 1, 50, 100, 200, 500, 1000, etc
 
 ##### Model Type 
 
 There are three model types:
 
+- quick
+  - For testing the models runs.
+  - Model results won’t be accurate but this mode is helpful when first running the model to ensure everything is running correctly.
+  - Run includes 2 chains and 10 iterations. 
 - report 
   - This is a full run of the model. 
-- quick
-  - For testing that the models runs. 
+  - This mode will take much longer then quick mode. 
+  - Run includes 3 chains and 500 iterations.
 - debug
   - Verbose output for debugging.
-
-#### Run 
-
-Model may take over 24 hours to run, be patient. 
+  - Use this mode if errors are occurring and more help is needed.
+  - Read the messages printed to the Console of RStudio to determine what is going on. 
+  - Run includes 2 chains and 10 iterations. 
 
 #### Description of Table
 
 **n**
 
+- Sample size.
+
 **K**
+
+- Number of parameter terms in the model.
 
 **nchains**
 
+- The number of chains.
+
 **niters**
+
+- Number of iterations. 
+- A count of the number of simulations to save per chain.
 
 **nthin**
 
@@ -39,9 +70,38 @@ Model may take over 24 hours to run, be patient.
 
 **ess**
 
+- Effective sample size (ess).
+- The number of independent samples with the same estimation power as the n autocorrelated samples.
+- Measure of how much independent information there is in autocorrelated chains.
+- Doubling the thinning rate doubles the ess
+
 **rhat**
 
-**coverage**
+- A ratio of variances that compares the between- and within-chain estimates for model parameters.
+- Evaluates whether the chains agreed on the same values.
+- As the total variance of all the chains shrinks to the average variance within chains, r-hat approaches 1 (close to 1 is ideal).
+
+**converged**
+
+- Whether or not the model converged. 
+  - Determines whether the model chains agreed on the same values.
+- TRUE
+  - This indicates the model converged.
+  - A model must converge for the results to considered accurate. 
+- FALSE
+  - This indicates the model did not converge.
+  - The model should be run again with different parameters or more data until the model converges.
+  - Results may not be accurate if the model did not converge.
+
+#### Download Options
+
+After a successful run of the model two download buttons will appear in the top left of the Output box.
+
+- Analysis Object
+  - Download the output of the model run as an rds file.
+  - This allows users to use the output of the model after the app closes.
+- Table
+  - Download the output table as a .csv file.  
 
 #### Helpful Tips
 

@@ -5,12 +5,14 @@ Please give the plots time to generate, it may take up to a minute or longer.
 Once a plot is visible in the tab there will be a download button present in the top right corner of the tab that downloads a png file. 
 Each plot needs to be downloaded individually. 
 
-#### Abundance Class
+#### Tabs
 
-#### Abundance Total
+**Abundance Class**
 
-#### Survival
+**Abundance Total**
 
-#### Fecundity
+**Survival**
 
-#### Ratios
+**Fecundity**
+
+**Ratios**
