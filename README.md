@@ -36,6 +36,10 @@ launch_runbisonpic()
 1.  Install the package
 2.  Click on the Addins drop-down and select **Start runbisonpic** App
 
+### User Guide
+
+To access the user guide go to XXXX (insert link).
+
 ## Contribution
 
 Please report any
