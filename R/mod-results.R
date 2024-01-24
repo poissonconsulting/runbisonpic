@@ -144,7 +144,7 @@ mod_results_server <- function(id, upload, model) {
 
     output$ui_plot_ac <- renderUI({
       req(model$analysis)
-      plotOutput(ns("plot_ac"), width = "50%")
+      plotOutput(ns("plot_ac"), width = "75%")
     })
 
     output$download_button_p1 <- renderUI({
@@ -176,7 +176,7 @@ mod_results_server <- function(id, upload, model) {
 
     output$ui_plot_at <- renderUI({
       req(model$analysis)
-      plotOutput(ns("plot_at"))
+      plotOutput(ns("plot_at"), width = "50%")
     })
 
     output$download_button_p2 <- renderUI({
@@ -208,7 +208,7 @@ mod_results_server <- function(id, upload, model) {
 
     output$ui_plot_surv <- renderUI({
       req(model$analysis)
-      plotOutput(ns("plot_surv"))
+      plotOutput(ns("plot_surv"), width = "75%")
     })
 
     output$download_button_p3 <- renderUI({
@@ -240,7 +240,7 @@ mod_results_server <- function(id, upload, model) {
 
     output$ui_plot_fec <- renderUI({
       req(model$analysis)
-      plotOutput(ns("plot_fec"))
+      plotOutput(ns("plot_fec"), width = "50%")
     })
 
     output$download_button_p4 <- renderUI({
@@ -272,7 +272,7 @@ mod_results_server <- function(id, upload, model) {
 
     output$ui_plot_rat <- renderUI({
       req(model$analysis)
-      plotOutput(ns("plot_rat"))
+      plotOutput(ns("plot_rat"), width = "75%")
     })
 
     output$download_button_p5 <- renderUI({
