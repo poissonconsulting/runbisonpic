@@ -19,7 +19,7 @@ limitations under the License.
 Steps to run the model: 
 
 1. Select the thinning.
-2. Select the model type.
+2. Select the model mode.
 3. Press the run button.
    - Model may take over 24 hours to run, be patient. 
    - The run is complete when the Outbox is populated with a table.
@@ -41,9 +41,9 @@ Steps to run the model:
   - Start with a small thinning value and increase as needed. 
   - Thinning is often increased by various values try 1, 50, 100, 200, 500, 1000, etc
 
-##### Model Type 
+##### Model Mode 
 
-There are three model types:
+There are three model modes:
 
 - quick
   - For testing the models runs.
@@ -121,4 +121,4 @@ After a successful run of the model two download buttons will appear in the top 
 
 #### Helpful Tips
 
-- If you set the thinning to 1 and model type to quick you can get a quick run of the model. This can help to make sure there are no issues with the data before doing a report run that may take a day or more to run. 
+- If you set the thinning to 1 and model mode to quick you can get a quick run of the model. This can help to make sure there are no issues with the data before doing a report run that may take a day or more to run. 
