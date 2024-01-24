@@ -21,7 +21,7 @@ Please give the plots time to generate, it may take up to a minute or longer.
 Once a plot is visible in the tab there will be a download button present in the top right corner of the tab that downloads a png file. 
 Each plot needs to be downloaded individually. 
 
-The points represent the median estimate of the posterior distribution, and the lines represent the range of the 95% credible limits.
+The points on the plot represent the median estimate of the posterior distribution, and the lines represent the range of the 95% credible limits.
 
 #### Tabs
 
@@ -44,3 +44,7 @@ Predicts the fecundity rate and proportion of reproductive cows.
 **Ratios**
 
 Predicts the following ratios for each study year: M0:F0, M1:F1, Calf:FA, Yearling:FA, M2:FA, M3:FA, MA:FA.
+
+#### Helpful Tips
+
+- Adjusting the zoom/view in the browser will change how the plots display, if you are finding the text on the plot too small try zooming in. This can be done through the browser view settings and selecting zoom in or by the keyboard shortcut *ctlr +* (or *command +* on a Mac).
