@@ -69,7 +69,7 @@ mod_model_server <- function(id, upload) {
       upload$reset
       selectInput(
         ns("model_type"),
-        label = "Model Type",
+        label = "Model Modes",
         choices = c("report", "quick", "debug"),
         selected = "quick"
       )
