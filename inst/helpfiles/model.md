@@ -39,7 +39,7 @@ Steps to run the model:
   - The model did not converge if the converged value in the output table is FALSE. 
 - As the thinning value increases the run time will also increase. 
   - Start with a small thinning value and increase as needed. 
-  - Thinning is often increased by various values try 1, 50, 100, 200, 500, 1000, etc
+  - Thinning is often increased by various values try 1, 50, 100, 200, 500, 1000, etc.
 
 ##### Model Mode 
 
@@ -89,7 +89,7 @@ There are three model modes:
 - Effective sample size (ess).
 - The number of independent samples with the same estimation power as the n autocorrelated samples.
 - Measure of how much independent information there is in autocorrelated chains.
-- Doubling the thinning rate doubles the ess
+- Doubling the thinning rate doubles the ess.
 
 **rhat**
 
