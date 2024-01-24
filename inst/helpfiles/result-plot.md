@@ -21,6 +21,8 @@ Please give the plots time to generate, it may take up to a minute or longer.
 Once a plot is visible in the tab there will be a download button present in the top right corner of the tab that downloads a png file. 
 Each plot needs to be downloaded individually. 
 
+The points represent the median estimate of the posterior distribution, and the lines represent the range of the 95% credible limits.
+
 #### Tabs
 
 **Abundance Class**

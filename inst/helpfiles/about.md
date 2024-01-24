@@ -18,4 +18,4 @@ limitations under the License.
 
 Alberta Environment and Parks is piloting using remote game cameras to monitor the herd composition of wood bison.
 This app aims to make modeling camera trap data fast and easy. 
-Prepared data is uploaded into the app, modeled and the results are reviewed. 
+Prepared data is uploaded into the app, modeled and the results are displayed for review. 
