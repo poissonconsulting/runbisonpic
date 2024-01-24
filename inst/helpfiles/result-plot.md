@@ -25,10 +25,20 @@ Each plot needs to be downloaded individually.
 
 **Abundance Class**
 
+Predicts abundances of each class for each study year.
+
 **Abundance Total**
+
+Predicts the total herd abundance for each study year, as the sum of the predicted abundances for each class.
 
 **Survival**
 
+Predicts the survival rates for each class for each study year. Bull survival corresponds to the M2, M3, and MA classes.
+
 **Fecundity**
 
+Predicts the fecundity rate and proportion of reproductive cows.
+
 **Ratios**
+
+Predicts the following ratios for each study year: M0:F0, M1:F1, Calf:FA, Yearling:FA, M2:FA, M3:FA, MA:FA.

@@ -28,7 +28,7 @@ Steps to run the model:
       - The screen goes grey and does not have a white spinner in the middle of the screen. 
       - A box appears in the bottom left corner saying disconnected.
       - An error message appears in the Console of RStudio.
-4. Download the results and continue to the next Results tab.
+4. Download the Analysis Object or Table and continue to the Results tab.
 
 #### Parameters
 
