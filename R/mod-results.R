@@ -28,35 +28,35 @@ mod_results_ui <- function(id, label = "model") {
         br(),
         uiOutput(ns("download_button_p1")),
         br(), br(),
-        uiOutput(ns("ui_plot_ac"))
+        uiOutput(ns("ui_plot_ac"), align = "center")
       ),
       tabPanel(
         title = "2. Abundance Total",
         br(),
         uiOutput(ns("download_button_p2")),
         br(), br(),
-        uiOutput(ns("ui_plot_at"))
+        uiOutput(ns("ui_plot_at"), align = "center")
       ),
       tabPanel(
         title = "3. Survival",
         br(),
         uiOutput(ns("download_button_p3")),
         br(), br(),
-        uiOutput(ns("ui_plot_surv"))
+        uiOutput(ns("ui_plot_surv"), align = "center")
       ),
       tabPanel(
         title = "4. Fecundity",
         br(),
         uiOutput(ns("download_button_p4")),
         br(), br(),
-        uiOutput(ns("ui_plot_fec"))
+        uiOutput(ns("ui_plot_fec"), align = "center")
       ),
       tabPanel(
         title = "5. Ratios",
         br(),
         uiOutput(ns("download_button_p5")),
         br(), br(),
-        uiOutput(ns("ui_plot_rat"))
+        uiOutput(ns("ui_plot_rat"), align = "center")
       )
     )
   )
@@ -144,7 +144,7 @@ mod_results_server <- function(id, upload, model) {
 
     output$ui_plot_ac <- renderUI({
       req(model$analysis)
-      plotOutput(ns("plot_ac"))
+      plotOutput(ns("plot_ac"), width = "50%")
     })
 
     output$download_button_p1 <- renderUI({
@@ -297,7 +297,10 @@ mod_results_server <- function(id, upload, model) {
 
     output$table_ac <- DT::renderDT({
       req(model$analysis)
-      rv$pred_ac <- bisonpictools::bpt_predict_abundance_class(model$analysis)
+      rv$pred_ac <-
+        results_table(
+          bisonpictools::bpt_predict_abundance_class(model$analysis)
+        )
     })
 
     output$ui_table_ac <- renderUI({
@@ -319,7 +322,10 @@ mod_results_server <- function(id, upload, model) {
 
     output$table_at <- DT::renderDT({
       req(model$analysis)
-      rv$pred_at <- bisonpictools::bpt_predict_abundance_total(model$analysis)
+      rv$pred_at <-
+        results_table(
+          bisonpictools::bpt_predict_abundance_total(model$analysis)
+        )
     })
 
     output$ui_table_at <- renderUI({
@@ -341,7 +347,10 @@ mod_results_server <- function(id, upload, model) {
 
     output$table_surv <- DT::renderDT({
       req(model$analysis)
-      rv$pred_surv <- bisonpictools::bpt_predict_survival(model$analysis)
+      rv$pred_surv <-
+        results_table(
+          bisonpictools::bpt_predict_survival(model$analysis)
+        )
     })
 
     output$ui_table_surv <- renderUI({
@@ -363,7 +372,10 @@ mod_results_server <- function(id, upload, model) {
 
     output$table_fec <- DT::renderDT({
       req(model$analysis)
-      rv$pred_fec <- bisonpictools::bpt_predict_fecundity(model$analysis)
+      rv$pred_fec <-
+        results_table(
+          bisonpictools::bpt_predict_fecundity(model$analysis)
+        )
     })
 
     output$ui_table_fec <- renderUI({
@@ -385,7 +397,10 @@ mod_results_server <- function(id, upload, model) {
 
     output$table_rat <- DT::renderDT({
       req(model$analysis)
-      rv$pred_rat <- bisonpictools::bpt_predict_ratios(model$analysis)
+      rv$pred_rat <-
+        results_table(
+          bisonpictools::bpt_predict_ratios(model$analysis)
+        )
     })
 
     output$ui_table_rat <- renderUI({

@@ -109,6 +109,21 @@ simple_table <- function(data) {
   )
 }
 
+results_table <- function(data) {
+  DT::datatable(
+    data,
+    options = list(
+      ordering = TRUE,
+      autowidth = TRUE,
+      scrollX = TRUE,
+      columnDefs = list(list(
+        className = "dt-right",
+        targets = "_all"
+      ))
+    )
+  ) |>
+    DT::formatRound(columns  = c("estimate", "lower", "upper"), digits = 3)
+}
 
 # Check Functions ----
 
