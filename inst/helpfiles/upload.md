@@ -29,8 +29,8 @@ The uploaded data will be run through a series of checks before it will be accep
 2. Upload data.
    - Click the **Browse...** button and select a file.
    - If the file is successfully uploaded it will appear in the Uploaded data box.
-   - If the file is not successfully uploaded a pop up box will appear with an error message:
-     - Close the pop up box.
+   - If the file is not successfully uploaded a pop-up box will appear with an error message:
+     - Close the pop-up box.
      - Correct the error.
      - Upload the corrected data.
      - Repeat until the file is successfully uploaded.
