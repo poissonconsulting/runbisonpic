@@ -23,7 +23,7 @@ Steps to run the model:
 3. Press the run button.
    - Model may take over 24 hours to run, be patient. 
    - The run is complete when the Outbox is populated with a table.
-   - If there is an issue a pop up box will appear indicating something is not valid, this must be fixed and the run button will need to be pressed again to restart the model run.
+   - If there is an issue a pop-up box will appear indicating something is not valid, this must be fixed, and the run button will need to be pressed again to restart the model run.
    - The app has crashed and needs to be restarted if any of the following occur:
       - The screen goes grey and does not have a white spinner in the middle of the screen. 
       - A box appears in the bottom left corner saying disconnected.
@@ -47,7 +47,7 @@ There are three model modes:
 
 - quick
   - For testing the models runs.
-  - Model results won’t be accurate but this mode is helpful when first running the model to ensure everything is running correctly.
+  - Model results won’t be accurate, but this mode is helpful when first running the model to ensure everything is running correctly.
   - Run includes 2 chains and 10 iterations. 
 - report 
   - This is a full run of the model. 
@@ -114,7 +114,7 @@ There are three model modes:
 After a successful run of the model two download buttons will appear in the top left of the Output box.
 
 - Analysis Object
-  - Download the output of the model run as an rds file.
+  - Download the output of the model run as a rds file.
   - This allows users to use the output of the model after the app closes.
 - Table
   - Download the output table as a .csv file.  

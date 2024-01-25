@@ -18,9 +18,9 @@ limitations under the License.
 
 **Workflow**
 
-1. Download template, fill in data and upload file
-2. Run model
-3. Explore the results
+1. Download template, fill in data and upload file.
+2. Run model.
+3. Explore the results.
 
 **Where is help located**
 
@@ -37,7 +37,7 @@ When this box pops up you must rectify the issue to continue.
 
 **App is not working**
 
-If it appears the app has frozen or is not responding try restarting your browser. 
+If it appears the app has frozen or is not responding, try restarting your browser. 
 Different browsers may display information differently, try a different browser if the app is not working. R shiny applications can take some time to generate results, ensure you have waited enough time before restarting. 
 
 **How to report a problem**
