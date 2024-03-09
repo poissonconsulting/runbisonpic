@@ -160,6 +160,6 @@ waiter_model <- function(msg = "Running model this is gonna take a while ...") {
       waiter::spin_flower(),
       h4(msg)
     ),
-    color = "rgb(145, 145, 145, 0.8)"
+    color = "rgb(68, 114, 196, 0.8)"
   )
 }
