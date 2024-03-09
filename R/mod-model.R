@@ -103,6 +103,16 @@ mod_model_server <- function(id, upload) {
       rv$model_table <- embr::glance(rv$analysis)
       rv$model_table$model_type <- input$model_type
       w$hide()
+
+      if (!rv$model_table$converged) {
+        showModal(
+          modalDialog(
+            "The model did not converge, therefore estimates are unreliable.
+          Please increase thinning and re-run the model for valid inference.",
+          footer = modalButton("Got it")
+          )
+        )
+      }
     })
 
     output$ui_table <- renderUI({
