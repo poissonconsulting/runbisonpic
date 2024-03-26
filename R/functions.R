@@ -163,3 +163,12 @@ waiter_model <- function(msg = "Running model this is gonna take a while ...") {
     color = "rgb(68, 114, 196, 0.8)"
   )
 }
+
+waiter_modal <- function() {
+  modalDialog(
+    "An error has occurred and the model has stopped running.
+    Check the RStudio Console to diagnose the problem.
+    Once resolved, try running the model again.",
+    footer = modalButton("Got it")
+  )
+}

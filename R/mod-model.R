@@ -92,14 +92,29 @@ mod_model_server <- function(id, upload) {
       }
 
       w$show()
-      rv$analysis <- bisonpictools::bpt_analyse(
-        event_data = upload$data$event,
-        location_data = upload$data$location,
-        census_data = upload$data$census,
-        proportion_calf_data = upload$data$proportion_calf,
-        nthin = input$thinning,
-        analysis_mode = input$model_type
+
+      rv$analysis <- try(
+        bisonpictools::bpt_analyse(
+          event_data = upload$data$event,
+          location_data = upload$data$location,
+          census_data = upload$data$census,
+          proportion_calf_data = upload$data$proportion_calf,
+          nthin = input$thinning,
+          analysis_mode = input$model_type
+        ),
+        silent = TRUE
       )
+
+      if (is_try_error(rv$analysis)) {
+        w$hide()
+        cat(rv$analysis[1])
+        return(
+          showModal(
+            waiter_modal()
+          )
+        )
+      }
+
       rv$model_table <- embr::glance(rv$analysis)
       rv$model_table$model_type <- input$model_type
       w$hide()
