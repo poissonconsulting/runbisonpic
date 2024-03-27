@@ -124,7 +124,7 @@ mod_model_server <- function(id, upload) {
           modalDialog(
             "The model did not converge, therefore estimates are unreliable.
           Please increase thinning and re-run the model for valid inference.",
-          footer = modalButton("Got it")
+            footer = modalButton("Got it")
           )
         )
       }

@@ -122,7 +122,7 @@ results_table <- function(data) {
       ))
     )
   ) |>
-    DT::formatRound(columns  = c("estimate", "lower", "upper"), digits = 3)
+    DT::formatRound(columns = c("estimate", "lower", "upper"), digits = 3)
 }
 
 # Check Functions ----
