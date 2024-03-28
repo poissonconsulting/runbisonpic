@@ -40,6 +40,14 @@ launch_runbisonpic()
 
 To access the user guide go to XXXX (insert link).
 
+## bisonpic Suite
+
+`runbisonpic` is part of the bisonpic suite of tools. Other packages in
+this suite include:
+
+- [bisonpictools](https://github.com/poissonconsulting/bisonpictools)
+- [shinybisonpic](https://github.com/poissonconsulting/shinybisonpic)
+
 ## Contribution
 
 Please report any
