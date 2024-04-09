@@ -61,7 +61,7 @@ mod_model_server <- function(id, upload) {
         value = 1,
         min = 1,
         max = 10000,
-        step = 100
+        step = 5
       )
     })
 
