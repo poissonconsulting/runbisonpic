@@ -21,7 +21,7 @@ Steps to run the model:
 1. Select the thinning.
 2. Select the model mode.
 3. Press the run button.
-   - Model may take over 24 hours to run, be patient. 
+   - Model may take more than 5 hours to run in report mode, be patient.
    - The run is complete when the Outbox is populated with a table.
    - If there is an issue a pop-up box will appear indicating something is not valid, this must be fixed, and the run button will need to be pressed again to restart the model run.
    - The app has crashed and needs to be restarted if any of the following occur:
@@ -34,12 +34,13 @@ Steps to run the model:
 
 ##### Thinning
 
-- Allowed values are an integer between 1 and 10000.
+- Allowed values are integers between 1 and 10000.
+- The suggested starting values are 1 for quick/debug mode and 10 for report mode.
 - Increase thinning if the model does not converge.
   - The model did not converge if the converged value in the output table is FALSE. 
 - As the thinning value increases the run time will also increase. 
   - Start with a small thinning value and increase as needed. 
-  - Thinning is often increased by various values try 1, 50, 100, 200, 500, 1000, etc.
+  - Thinning is often increased by various values, try 10, 15, 20, 50, 100, 200, 500, 1000, etc.
 
 ##### Model Mode 
 
@@ -83,6 +84,7 @@ There are three model modes:
 - How much the chains should be thinned out before storing them.
   - Setting nthin = 1 corresponds to keeping all values.
   - A value of nthin = 100 would result in keeping every 100th value and discarding all other values.
+  - The suggested starting values are 1 for quick/debug mode and 10 for report mode.
 
 **ess**
 
