@@ -16,6 +16,6 @@ limitations under the License.
 
 ### runbisonpic About
 
-Alberta Environment and Parks is piloting using remote game cameras to monitor the herd composition of wood bison.
+Alberta Environment and Protected Areas is piloting using remote game cameras to monitor the herd composition of wood bison.
 This app aims to make modeling camera trap data fast and easy. 
 Prepared data is uploaded into the app, modeled and the results are displayed for review. 
