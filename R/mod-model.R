@@ -58,7 +58,7 @@ mod_model_server <- function(id, upload) {
       numericInput(
         ns("thinning"),
         label = "Thinning",
-        value = 1,
+        value = 10,
         min = 1,
         max = 10000,
         step = 100
