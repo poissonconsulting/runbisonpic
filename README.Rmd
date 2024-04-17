@@ -14,7 +14,7 @@ output: github_document
 
 ### How to Install the R Package
 
-To install the developmental version from
+To install from
 [GitHub](https://github.com/poissonconsulting/runbisonpic)
 
 ```{r, eval=FALSE}
@@ -27,15 +27,13 @@ remotes::install_github("poissonconsulting/runbisonpic")
 Run the function `launch_runbisonpic()` and the app will open in your default web browser. 
 
 ```{r, eval=FALSE}
-# install.packages("runbisonpic")
 library(runbisonpic)
 launch_runbisonpic()
 ```
 
 ### How to Launch the App with RStudio Addins Button
 
-1.  Install the package
-2.  Click on the Addins drop-down and select **Start runbisonpic** App
+Click on the Addins drop-down and select **Start runbisonpic** App.
 
 ### User Guide
 
