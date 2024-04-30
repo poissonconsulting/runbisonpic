@@ -8,6 +8,15 @@
 \description{
 This app is a wrapper on the `bisonpictools` R package which provides non R user's a way to model camera trap data. Input data, run a STAN model and review the predicted results.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/poissonconsulting/runbisonpic}
+  \item \url{https://poissonconsulting.github.io/runbisonpic/}
+  \item Report bugs at \url{https://github.com/poissonconsulting/runbisonpic/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Ayla Pearson \email{ayla@poissonconsulting.ca} (\href{https://orcid.org/0000-0001-7388-1222}{ORCID})
 
