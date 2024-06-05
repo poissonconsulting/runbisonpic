@@ -18,7 +18,7 @@ limitations under the License.
 
 **Workflow**
 
-1. Download template, fill in data and upload file.
+1. Download template, fill in data, and upload file.
 2. Run model.
 3. Explore the results.
 

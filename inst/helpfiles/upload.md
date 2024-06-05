@@ -34,6 +34,8 @@ The uploaded data will be run through a series of checks before it will be accep
      - Correct the error.
      - Upload the corrected data.
      - Repeat until the file is successfully uploaded.
+     
+If desired, download an example dataset by clicking the **Download Example Data** button, then proceed with step 2 above to explore the app's functionality.
    
 ##### Required Data Format
 
