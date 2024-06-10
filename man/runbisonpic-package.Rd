@@ -6,7 +6,7 @@
 \alias{runbisonpic-package}
 \title{runbisonpic: Shiny App for Modeling Wood Bison Camera Trap Data}
 \description{
-This app is a wrapper on the `bisonpictools` R package which provides non R user's a way to model camera trap data. Input data, run a STAN model and review the predicted results.
+This app is a wrapper on the `bisonpictools` R package which provides non R user's a way to model camera trap data. Input data, run a Stan model and review the predicted results.
 }
 \seealso{
 Useful links:
