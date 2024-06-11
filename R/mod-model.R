@@ -105,6 +105,9 @@ mod_model_server <- function(id, upload) {
         silent = TRUE
       )
 
+      on.exit(embr::set_analysis_mode("reset"))
+      embr::set_analysis_mode(input$model_type)
+
       if (is_try_error(rv$analysis)) {
         w$hide()
         cat(rv$analysis[1])
