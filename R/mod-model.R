@@ -105,7 +105,8 @@ mod_model_server <- function(id, upload) {
         silent = TRUE
       )
 
-      on.exit(embr::set_analysis_mode("reset"))
+      current_analysis_mode <- embr::get_analysis_mode()
+      on.exit(options(current_analysis_mode))
       embr::set_analysis_mode(input$model_type)
 
       if (is_try_error(rv$analysis)) {
