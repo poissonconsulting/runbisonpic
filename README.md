@@ -36,12 +36,21 @@ Click on the Addins drop-down and select **Start runbisonpic** App.
 
 ### User Guide
 
-To access the user guide go to XXXX (insert link).
+See the [user
+guide](https://poissonconsulting.github.io/bisonpicsuite/bisonpic-user-guide.html)
+for step-by-step instructions on how to use the app.
+
+Additional information is available from the
+[`bisonpicsuite`](https://poissonconsulting.github.io/bisonpicsuite/)
+and
+[`bisonpictools`](https://poissonconsulting.github.io/bisonpictools/)
+websites.
 
 ## bisonpic Suite
 
-`runbisonpic` is part of the bisonpic suite of tools. Other packages in
-this suite include:
+`runbisonpic` is part of the [bisonpic
+suite](https://github.com/poissonconsulting/bisonpicsuite) of tools.
+Other packages in this suite include:
 
 - [bisonpictools](https://github.com/poissonconsulting/bisonpictools)
 - [shinybisonpic](https://github.com/poissonconsulting/shinybisonpic)
