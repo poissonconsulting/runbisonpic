@@ -34,8 +34,6 @@ Imports:
     shinyhelper,
     waiter,
     writexl
-Suggests: 
-    testthat (>= 3.0.0)
 Remotes:
     poissonconsulting/bisonpictools,
     poissonconsulting/chktemplate,
