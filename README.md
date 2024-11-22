@@ -7,6 +7,15 @@
 <!-- badges: end -->
 
 `runbisonpic` is a Shiny app for modeling wood bison camera trap data.
+The app facilitates data checking and analysis by providing a simple
+interface. The data are analyzed using an Bayesian Integrated Population
+Model, which combines a stage-structured population projection matrix
+model with multiple sources of data into a unified framework, allowing
+for estimates of age-sex class ratios, population vital rates, and
+abundances, while maintaining the correct propagation of uncertainty.
+See the [analytical
+methods](https://poissonconsulting.github.io/bisonpictools/articles/bisonpic-methods.html)
+vignette for more detail on the modeling approach.
 
 ## Usage
 
