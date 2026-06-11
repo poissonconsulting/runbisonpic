@@ -18,7 +18,7 @@
   Thorley](https://www.poissonconsulting.ca/author/joe-thorley/)**.
   Contributor. [](https://orcid.org/0000-0002-7683-4592)
 
-- **Troy Hegel**. Contributor.
+- **Troy Hegel**. Contributor. [](https://orcid.org/0000-0001-5363-7716)
 
 - **Province of Alberta**. Copyright holder.
 
