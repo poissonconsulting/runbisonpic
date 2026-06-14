@@ -1,5 +1,16 @@
 # Changelog
 
+## runbisonpic 0.3.0.9000
+
+- Remove render-readme.yaml workflow
+  ([\#35](https://github.com/poissonconsulting/runbisonpic/issues/35)).
+- Add/correct author ORCID(s) in DESCRIPTION
+  ([\#34](https://github.com/poissonconsulting/runbisonpic/issues/34)).
+- Add CODEOWNERS assigning [@aylapear](https://github.com/aylapear)
+  ([\#33](https://github.com/poissonconsulting/runbisonpic/issues/33)).
+- Upkeep
+  [\#32](https://github.com/poissonconsulting/runbisonpic/issues/32).
+
 ## runbisonpic 0.3.0
 
 - Update package documentation.
