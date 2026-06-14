@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# runbisonpic 0.3.0.9000
+
+- Remove render-readme.yaml workflow (#35).
+- Add/correct author ORCID(s) in DESCRIPTION (#34).
+- Add CODEOWNERS assigning @aylapear (#33).
+- Upkeep #32.
+
 # runbisonpic 0.3.0
 
 - Update package documentation.
