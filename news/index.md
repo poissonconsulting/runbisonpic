@@ -1,5 +1,9 @@
 # Changelog
 
+## runbisonpic 0.3.0.9002
+
+- Same as previous version.
+
 ## runbisonpic 0.3.0.9001
 
 - Add fledge-bump workflow
