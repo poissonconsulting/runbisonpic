@@ -27,35 +27,40 @@ mod_results_ui <- function(id, label = "model") {
         title = "1. Abundance Class",
         br(),
         uiOutput(ns("download_button_p1")),
-        br(), br(),
+        br(),
+        br(),
         uiOutput(ns("ui_plot_ac"), align = "center")
       ),
       tabPanel(
         title = "2. Abundance Total",
         br(),
         uiOutput(ns("download_button_p2")),
-        br(), br(),
+        br(),
+        br(),
         uiOutput(ns("ui_plot_at"), align = "center")
       ),
       tabPanel(
         title = "3. Survival",
         br(),
         uiOutput(ns("download_button_p3")),
-        br(), br(),
+        br(),
+        br(),
         uiOutput(ns("ui_plot_surv"), align = "center")
       ),
       tabPanel(
         title = "4. Fecundity",
         br(),
         uiOutput(ns("download_button_p4")),
-        br(), br(),
+        br(),
+        br(),
         uiOutput(ns("ui_plot_fec"), align = "center")
       ),
       tabPanel(
         title = "5. Ratios",
         br(),
         uiOutput(ns("download_button_p5")),
-        br(), br(),
+        br(),
+        br(),
         uiOutput(ns("ui_plot_rat"), align = "center")
       )
     )
@@ -73,35 +78,40 @@ mod_results_ui <- function(id, label = "model") {
         title = "1. Abundance Class",
         br(),
         uiOutput(ns("download_button_ac")),
-        br(), br(),
+        br(),
+        br(),
         uiOutput(ns("ui_table_ac"))
       ),
       tabPanel(
         title = "2. Abundance Total",
         br(),
         uiOutput(ns("download_button_at")),
-        br(), br(),
+        br(),
+        br(),
         uiOutput(ns("ui_table_at"))
       ),
       tabPanel(
         title = "3. Survival",
         br(),
         uiOutput(ns("download_button_surv")),
-        br(), br(),
+        br(),
+        br(),
         uiOutput(ns("ui_table_surv"))
       ),
       tabPanel(
         title = "4. Fecundity",
         br(),
         uiOutput(ns("download_button_fec")),
-        br(), br(),
+        br(),
+        br(),
         uiOutput(ns("ui_table_fec"))
       ),
       tabPanel(
         title = "5. Ratios",
         br(),
         uiOutput(ns("download_button_rat")),
-        br(), br(),
+        br(),
+        br(),
         uiOutput(ns("ui_table_rat"))
       )
     )

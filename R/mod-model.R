@@ -33,7 +33,8 @@ mod_model_ui <- function(id, label = "results") {
     br(),
     uiOutput(ns("download_button_tbl")),
     uiOutput(ns("download_button_analysis")),
-    br(), br(),
+    br(),
+    br(),
     uiOutput(ns("ui_table"))
   )
 
