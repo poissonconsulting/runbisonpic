@@ -28,13 +28,13 @@ Source:
 [`DESCRIPTION`](https://github.com/poissonconsulting/runbisonpic/blob/main/DESCRIPTION)
 
 Pearson A (2026). *runbisonpic: Shiny App for Modeling Wood Bison Camera
-Trap Data*. R package version 0.3.0.9002,
+Trap Data*. R package version 0.3.0.9003,
 <https://github.com/poissonconsulting/runbisonpic>.
 
     @Manual{,
       title = {runbisonpic: Shiny App for Modeling Wood Bison Camera Trap Data},
       author = {Ayla Pearson},
       year = {2026},
-      note = {R package version 0.3.0.9002},
+      note = {R package version 0.3.0.9003},
       url = {https://github.com/poissonconsulting/runbisonpic},
     }
