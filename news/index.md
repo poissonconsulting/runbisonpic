@@ -1,5 +1,10 @@
 # Changelog
 
+## runbisonpic 0.3.0.9004
+
+- Standardize CI (tier: unimportant) - update fledge system
+  ([\#46](https://github.com/poissonconsulting/runbisonpic/issues/46)).
+
 ## runbisonpic 0.3.0.9003
 
 - Same as previous version.
